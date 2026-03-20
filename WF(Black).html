@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luciana — An acclaimed fine dining Italian restaurant in Chicago. Experience authentic Italian cuisine reimagined with seasonal Midwestern ingredients. Michelin-recognized.">
+    <meta name="keywords" content="Chicago Italian restaurant, fine dining Chicago, Michelin Italian Chicago, best Italian restaurant Chicago, upscale Italian dining">
+    <title>Luciana — Fine Dining Italian Restaurant | Chicago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0e0e0e;
+            --bg-secondary: #161614;
+            --bg-tertiary: #1c1b18;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a09a8e;
+            --text-dim: #6b665c;
+            --accent-gold: #c4a265;
+            --accent-gold-light: #d4b87a;
+            --accent-warm: #8b7355;
+            --divider: rgba(196, 162, 101, 0.15);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Libre Baskerville', serif;
+            --font-sans: 'Josefin Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background: var(--bg-primary);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 3vw;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.6s ease, backdrop-filter 0.6s ease, border-color 0.6s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(14, 14, 14, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom-color: var(--divider);
+        }
+
+        .header__logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .header__nav a {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header__nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .header__reserve {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            text-decoration: none;
+            border: 1px solid var(--accent-gold);
+            padding: 0.6rem 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .header__reserve:hover {
+            background: var(--accent-gold);
+            color: var(--bg-primary);
+        }
+
+        .header__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .header__hamburger span {
+            width: 24px;
+            height: 1px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+        }
+
+        .hero__image-wrapper {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transform: scale(1.08);
+            transition: transform 8s ease-out;
+            filter: brightness(0.45) contrast(1.1);
+        }
+
+        .hero.in-view .hero__image {
+            transform: scale(0.95);
+        }
+
+        .hero__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(14, 14, 14, 0.3) 0%,
+                rgba(14, 14, 14, 0.1) 40%,
+                rgba(14, 14, 14, 0.5) 80%,
+                rgba(14, 14, 14, 1) 100%
+            );
+        }
+
+        .hero__content {
+            position: absolute;
+            bottom: 12vh;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero__eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 10vw, 9rem);
+            font-weight: 300;
+            letter-spacing: 0.08em;
+            line-height: 0.9;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero__scroll {
+            position: absolute;
+            bottom: 3vh;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+        }
+
+        .hero__scroll span {
+            font-family: var(--font-sans);
+            font-size: 0.55rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .hero__scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent-gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ==================== SECTION COMMONS ==================== */
+        .section {
+            padding: 8rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3vw;
+        }
+
+        .container--narrow {
+            max-width: 820px;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 3rem 0;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.15s; }
+        .fade-in-delay-2 { transition-delay: 0.3s; }
+        .fade-in-delay-3 { transition-delay: 0.45s; }
+        .fade-in-delay-4 { transition-delay: 0.6s; }
+
+        /* ==================== ABOUT ==================== */
+        .about {
+            background: var(--bg-primary);
+        }
+
+        .about__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about__text p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about__text p:first-of-type::first-letter {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: -0.01em;
+            margin-top: -0.25em;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .about__image-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about__image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--divider);
+            pointer-events: none;
+        }
+
+        .about__image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.05) saturate(0.9);
+            transition: transform 1.2s ease;
+        }
+
+        .about__image-wrapper:hover .about__image {
+            transform: scale(1.03);
+        }
+
+        .about__quote {
+            margin-top: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--accent-gold);
+        }
+
+        .about__quote p {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .about__quote cite {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-style: normal;
+        }
+
+        /* ==================== PHILOSOPHY ==================== */
+        .philosophy {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--divider);
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .philosophy__content {
+            text-align: center;
+        }
+
+        .philosophy__text {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .philosophy__ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .philosophy__ornament span {
+            width: 30px;
+            height: 1px;
+            background: var(--accent-gold);
+        }
+
+        .philosophy__ornament svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 1;
+        }
+
+        /* ==================== MENU ==================== */
+        .menu {
+            background: var(--bg-primary);
+        }
+
+        .menu__intro {
+            max-width: 650px;
+            margin-bottom: 4rem;
+        }
+
+        .menu__intro p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .menu__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .menu__item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu__item-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            filter: brightness(0.8) saturate(0.9);
+            transition: all 0.8s ease;
+        }
+
+        .menu__item:hover .menu__item-image {
+            filter: brightness(0.95) saturate(1);
+            transform: scale(1.04);
+        }
+
+        .menu__item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(14,14,14,0.85) 0%, transparent 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.8rem;
+            transition: background 0.5s ease;
+        }
+
+        .menu__item:hover .menu__item-overlay {
+            background: linear-gradient(to top, rgba(14,14,14,0.9) 0%, rgba(14,14,14,0.1) 60%);
+        }
+
+        .menu__item-name {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .menu__item-desc {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        /* ==================== EDITORIAL BREAK ==================== */
+        .editorial-break {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .editorial-break__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) saturate(0.85);
+        }
+
+        .editorial-break__overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                to bottom,
+                rgba(14,14,14,0.6),
+                rgba(14,14,14,0.4),
+                rgba(14,14,14,0.6)
+            );
+        }
+
+        .editorial-break__text {
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .editorial-break__text h3 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.3;
+            max-width: 600px;
+        }
+
+        /* ==================== WINE ==================== */
+        .wine {
+            background: var(--bg-primary);
+        }
+
+        .wine__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .wine__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .wine__images img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: brightness(0.85) saturate(0.9);
+            transition: transform 0.8s ease;
+        }
+
+        .wine__images img:hover {
+            transform: scale(1.02);
+        }
+
+        .wine__images img:first-child {
+            transform: translateY(2rem);
+        }
+
+        .wine__images img:first-child:hover {
+            transform: translateY(2rem) scale(1.02);
+        }
+
+        .wine__text p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==================== INSTAGRAM ==================== */
+        .instagram {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--divider);
+            padding: 5rem 0;
+        }
+
+        .instagram__header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .instagram__handle {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .instagram__handle:hover {
+            color: var(--accent-gold);
+        }
+
+        .instagram__grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+        }
+
+        .instagram__item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .instagram__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) saturate(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .instagram__item:hover img {
+            filter: brightness(1) saturate(1);
+            transform: scale(1.05);
+        }
+
+        .instagram__item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(14, 14, 14, 0.2);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .instagram__item:hover::after {
+            opacity: 0;
+        }
+
+        /* ==================== RESERVATIONS ==================== */
+        .reservations {
+            background: var(--bg-primary);
+            text-align: center;
+            padding: 10rem 0;
+            position: relative;
+        }
+
+        .reservations__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .reservations .section-heading {
+            margin-bottom: 1.5rem;
+        }
+
+        .reservations__text {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 3rem;
+        }
+
+        .reservations__cta {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--bg-primary);
+            background: var(--accent-gold);
+            text-decoration: none;
+            padding: 1.1rem 3.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .reservations__cta:hover {
+            background: var(--accent-gold-light);
+            letter-spacing: 0.45em;
+        }
+
+        .reservations__or {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            margin-top: 1.5rem;
+        }
+
+        .reservations__phone {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reservations__phone:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--bg-tertiary);
+            border-top: 1px solid var(--divider);
+            padding: 5rem 0 3rem;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer__logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer__tagline {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .footer__heading {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer__list {
+            list-style: none;
+        }
+
+        .footer__list li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer__list a,
+        .footer__list span {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .footer__list a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid var(--divider);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__copyright {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer__social a {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer__social a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* ==================== MOBILE NAV OVERLAY ==================== */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: rgba(14, 14, 14, 0.98);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .mobile-nav__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .about__grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about__image-wrapper {
+                order: -1;
+                max-width: 500px;
+            }
+
+            .wine__grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .menu__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header__nav {
+                display: none;
+            }
+
+            .header__hamburger {
+                display: flex;
+            }
+
+            .hero__content {
+                bottom: 15vh;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .menu__grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .instagram__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .wine__images img:first-child {
+                transform: none;
+            }
+
+            .wine__images img:first-child:hover {
+                transform: scale(1.02);
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .reservations {
+                padding: 6rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .instagram__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="#" class="header__logo">Luciana</a>
+        <nav class="header__nav">
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#wine">Wine</a>
+            <a href="#contact">Contact</a>
+            <a href="https://resy.com" target="_blank" rel="noopener" class="header__reserve">Reserve</a>
+        </nav>
+        <div class="header__hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav__close" id="mobileNavClose">Close</button>
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#menu" onclick="closeMobileNav()">Menu</a>
+        <a href="#wine" onclick="closeMobileNav()">Wine</a>
+        <a href="#contact" onclick="closeMobileNav()">Contact</a>
+        <a href="https://resy.com" target="_blank" rel="noopener">Reserve a Table</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero__image-wrapper">
+            <img class="hero__image" src="写真/シェフ2.jpg" alt="Head chef preparing an exquisite Italian dish at Luciana, Chicago's premier fine dining Italian restaurant">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__eyebrow">Chicago · Fine Dining · Italian</p>
+            <h1 class="hero__title">Luciana</h1>
+            <p class="hero__subtitle">A reverence for Italian tradition, reimagined</p>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__text fade-in">
+                    <p class="section-label">Our Story</p>
+                    <h2 class="section-heading">Where Italian Heritage<br>Meets Chicago Soul</h2>
+                    <div class="section-divider"></div>
+                    <p>Luciana is a fine dining Italian restaurant in Chicago that celebrates the depth and beauty of Italy's culinary traditions. Nestled in the heart of the city, our kitchen draws from generations of Italian cooking — the slow-simmered ragùs of Emilia-Romagna, the coastal brightness of the Amalfi, the rustic elegance of Tuscany — and reinterprets each dish through the lens of the Midwest's finest seasonal ingredients.</p>
+                    <p>Founded by Chef Marco De Luca, Luciana was born from a simple conviction: that Italian cuisine, at its highest expression, is an act of devotion. Every plate is a conversation between old-world technique and new-world possibility, composed with restraint and served with warmth. As one of Chicago's most acclaimed Italian restaurants, we invite guests not merely to dine, but to linger — to rediscover the Italian table as a place of connection, beauty, and quiet celebration.</p>
+                    <div class="about__quote">
+                        <p>"Cooking is memory made visible. Each dish carries the weight of the hands that came before."</p>
+                        <cite>— Chef Marco De Luca</cite>
+                    </div>
+                </div>
+                <div class="about__image-wrapper fade-in fade-in-delay-2">
+                    <img class="about__image" src="写真/kirtip-italian-food-6371757.jpg" alt="Handcrafted Italian cuisine at Luciana restaurant Chicago">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY BREAK -->
+    <section class="philosophy section fade-in">
+        <div class="container container--narrow">
+            <div class="philosophy__content">
+                <p class="philosophy__text">We believe the finest Italian dining in Chicago begins not with extravagance, but with integrity — sourcing the purest ingredients, honoring time-tested methods, and crafting each moment at the table with intention and grace.</p>
+                <div class="philosophy__ornament">
+                    <span></span>
+                    <svg viewBox="0 0 16 16"><path d="M8 1 L15 8 L8 15 L1 8 Z"/></svg>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu section" id="menu">
+        <div class="container">
+            <p class="section-label fade-in">The Menu</p>
+            <h2 class="section-heading fade-in">A Seasonal Tasting Journey</h2>
+            <div class="menu__intro fade-in">
+                <p>Our tasting menu evolves with the seasons, guided by what the land and our partner farms offer at their peak. Each course is designed to tell a story — of place, of tradition, of the moment. Below is a glimpse of the dishes that define the Luciana experience, Chicago's destination for elevated Italian fine dining.</p>
+            </div>
+            <div class="menu__grid">
+                <div class="menu__item fade-in">
+                    <img class="menu__item-image" src="写真/35796437-recipe-8577854.jpg" alt="Signature appetizer at Luciana fine dining Italian restaurant Chicago">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Burrata Affumicata</h3>
+                        <p class="menu__item-desc">Heirloom tomato · Basil oil · Aged balsamic</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-1">
+                    <img class="menu__item-image" src="写真/fabrizio_65-italian-pasta-7432298.jpg" alt="Handmade pasta dish at Luciana Chicago Italian restaurant">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Tagliatelle al Tartufo</h3>
+                        <p class="menu__item-desc">Hand-rolled pasta · Black truffle · Parmigiano</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-2">
+                    <img class="menu__item-image" src="写真/ayindeabdulmajeed44-spaghetti-6639970.jpg" alt="Spaghetti course at Luciana upscale Italian dining Chicago">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Spaghetti alle Vongole</h3>
+                        <p class="menu__item-desc">Littleneck clams · White wine · Calabrian chili</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in">
+                    <img class="menu__item-image" src="写真/michelrigottiphotographer-pasta-9450866.jpg" alt="Fresh pasta served at Chicago's best Italian fine dining restaurant">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Pappardelle al Cinghiale</h3>
+                        <p class="menu__item-desc">Wild boar ragù · Pecorino · Rosemary</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-1">
+                    <img class="menu__item-image" src="写真/ylanite-pasta-8211280.jpg" alt="Artisan Italian dish at Luciana restaurant">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Risotto al Nero</h3>
+                        <p class="menu__item-desc">Squid ink · Scallop · Lemon zest</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-2">
+                    <img class="menu__item-image" src="写真/igorovsyannykov-pizza-3007395.jpg" alt="Wood-fired specialty at Luciana Italian restaurant Chicago IL">
+                    <div class="menu__item-overlay">
+                        <h3 class="menu__item-name">Focaccia di Recco</h3>
+                        <p class="menu__item-desc">Stracchino · Ligurian olive oil · Sea salt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDITORIAL BREAK -->
+    <div class="editorial-break fade-in">
+        <img class="editorial-break__image" src="写真/nadinshlyueva-wine-7046276.jpg" alt="Wine service at Luciana fine dining Chicago">
+        <div class="editorial-break__overlay">
+            <div class="editorial-break__text">
+                <h3>"Every bottle we pour has a story. Our role is simply to introduce you."</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- WINE -->
+    <section class="wine section" id="wine">
+        <div class="container">
+            <div class="wine__grid">
+                <div class="wine__images fade-in">
+                    <img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Curated Italian wine selection at Luciana Chicago">
+                    <img src="写真/raeuberleiter-wine-rack-3698774.jpg" alt="Wine cellar at Luciana fine dining Italian restaurant Chicago">
+                </div>
+                <div class="wine__text fade-in fade-in-delay-1">
+                    <p class="section-label">The Cellar</p>
+                    <h2 class="section-heading">An Italian Wine<br>Program of Depth</h2>
+                    <div class="section-divider"></div>
+                    <p>Luciana's wine program is a journey through Italy's most storied regions. Our cellar houses over 400 selections — from the bold Barolos of Piedmont and the structured Brunellos of Montalcino to the mineral-driven whites of Campania and the rare indigenous varietals of Sicily.</p>
+                    <p>Our sommelier team works closely with the kitchen to compose pairings that elevate each course, creating harmonies between plate and glass that feel both surprising and inevitable. Whether you seek a familiar favorite or wish to explore something new, the wine experience at Luciana is designed to deepen your evening at Chicago's finest Italian table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="instagram" id="instagram">
+        <div class="container">
+            <div class="instagram__header fade-in">
+                <p class="section-label" style="text-align:center; margin-bottom:0.8rem;">Follow Us</p>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="instagram__handle">@luciana.chicago</a>
+            </div>
+        </div>
+        <div class="instagram__grid fade-in">
+            <div class="instagram__item"><img src="写真/35796437-recipe-8577854.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/kirtip-italian-food-6371757.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/fabrizio_65-italian-pasta-7432298.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/michelrigottiphotographer-pasta-9450866.jpg" alt="Luciana Chicago Instagram"></div>
+        </div>
+    </section>
+
+    <!-- RESERVATIONS -->
+    <section class="reservations section" id="reservations">
+        <div class="container">
+            <div class="reservations__content fade-in">
+                <p class="section-label">Reservations</p>
+                <h2 class="section-heading">Join Us at the Table</h2>
+                <p class="reservations__text">We welcome guests for dinner Tuesday through Saturday. Reservations are recommended and can be made through Resy. For parties of eight or more, or to inquire about private dining experiences, please contact us directly.</p>
+                <a href="https://resy.com" target="_blank" rel="noopener" class="reservations__cta">Reserve on Resy</a>
+                <p class="reservations__or">or call us</p>
+                <a href="tel:+13125550100" class="reservations__phone">+1 (312) 555-0100</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <h3 class="footer__logo">Luciana</h3>
+                    <p class="footer__tagline">Fine dining Italian restaurant in Chicago.<br>A reverence for tradition, reimagined.</p>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Visit</h4>
+                    <ul class="footer__list">
+                        <li><span>123 N. Michigan Avenue</span></li>
+                        <li><span>Chicago, IL 60601</span></li>
+                        <li><a href="tel:+13125550100">+1 (312) 555-0100</a></li>
+                        <li><a href="mailto:info@luciana-chicago.com">info@luciana-chicago.com</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Hours</h4>
+                    <ul class="footer__list">
+                        <li><span>Tuesday – Thursday</span></li>
+                        <li><span>5:30 PM – 10:00 PM</span></li>
+                        <li><span style="margin-top:0.6rem; display:block;">Friday – Saturday</span></li>
+                        <li><span>5:00 PM – 11:00 PM</span></li>
+                        <li><span style="margin-top:0.6rem; display:block;">Sunday – Monday</span></li>
+                        <li><span>Closed</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#menu">The Menu</a></li>
+                        <li><a href="#wine">Wine Program</a></li>
+                        <li><a href="https://resy.com" target="_blank" rel="noopener">Reservations</a></li>
+                        <li><a href="#">Private Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2026 Luciana. All rights reserved.</p>
+                <div class="footer__social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ====== HEADER SCROLL ====== */
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            header.classList.toggle('scrolled', y > 80);
+            lastScroll = y;
+        }, { passive: true });
+
+        /* ====== HERO ENTRANCE ====== */
+        window.addEventListener('load', () => {
+            const hero = document.querySelector('.hero');
+            hero.classList.add('in-view');
+
+            const eyebrow = document.querySelector('.hero__eyebrow');
+            const title = document.querySelector('.hero__title');
+            const subtitle = document.querySelector('.hero__subtitle');
+            const scroll = document.querySelector('.hero__scroll');
+
+            setTimeout(() => {
+                eyebrow.style.transition = 'opacity 1s ease, transform 1s ease';
+                eyebrow.style.opacity = '1';
+                eyebrow.style.transform = 'translateY(0)';
+            }, 300);
+
+            setTimeout(() => {
+                title.style.transition = 'opacity 1.2s ease, transform 1.2s ease';
+                title.style.opacity = '1';
+                title.style.transform = 'translateY(0)';
+            }, 600);
+
+            setTimeout(() => {
+                subtitle.style.transition = 'opacity 1s ease, transform 1s ease';
+                subtitle.style.opacity = '1';
+                subtitle.style.transform = 'translateY(0)';
+            }, 1100);
+
+            setTimeout(() => {
+                scroll.style.transition = 'opacity 1s ease';
+                scroll.style.opacity = '1';
+            }, 1800);
+        });
+
+        /* ====== SCROLL FADE-IN ====== */
+        const faders = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        faders.forEach(el => fadeObserver.observe(el));
+
+        /* ====== MOBILE NAV ====== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => mobileNav.classList.add('active'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('active');
+        }
+
+        /* ====== PARALLAX HERO ====== */
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero__image');
+            const scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+                hero.style.transform = `scale(${1 + scrolled * 0.0001}) translateY(${scrolled * 0.15}px)`;
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>

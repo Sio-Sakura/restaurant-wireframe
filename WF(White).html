@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luciana — Chicago's premier fine dining Italian restaurant. Seasonal tasting menus rooted in Italian tradition, crafted with Midwestern ingredients. Michelin-recognized.">
+    <meta name="keywords" content="Chicago Italian restaurant, fine dining Chicago, Michelin Italian Chicago, best Italian restaurant Chicago, upscale Italian dining, Italian fine dining">
+    <title>Luciana — Fine Dining Italian Restaurant | Chicago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf8f5;
+            --bg-warm: #f3efe8;
+            --bg-cream: #eee9e0;
+            --text-primary: #1a1815;
+            --text-body: #3d3830;
+            --text-secondary: #6b6358;
+            --text-light: #9a9184;
+            --accent: #8b6914;
+            --accent-soft: #b8944a;
+            --accent-bg: rgba(139, 105, 20, 0.06);
+            --divider: rgba(26, 24, 21, 0.1);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lora', serif;
+            --font-sans: 'Manrope', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background: var(--bg-primary);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 4vw;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .header.scrolled {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .header__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header.scrolled .header__logo {
+            color: var(--text-primary);
+        }
+
+        .header__right {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+        }
+
+        .header__nav {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .header__nav a {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header.scrolled .header__nav a {
+            color: var(--text-secondary);
+        }
+
+        .header__nav a {
+            color: var(--text-secondary);
+        }
+
+        .header__nav a:hover {
+            color: var(--accent);
+        }
+
+        .header__reserve {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: transparent;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 0.65rem 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .header.scrolled .header__reserve {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .header__reserve:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+
+        .header__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .header__hamburger span {
+            width: 22px;
+            height: 1px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .header__hamburger span {
+            background: var(--text-primary);
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            position: relative;
+            height: calc(85vh + 105px);
+            min-height: 655px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1);
+            filter: brightness(0.55) contrast(1.05);
+        }
+
+        .hero.in-view .hero__bg img {
+            transform: scale(1);
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 4vw;
+            padding-left: 8vw;
+            max-width: 680px;
+        }
+
+        .hero__label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--accent-soft);
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            transform: translateY(15px);
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(3.8rem, 9vw, 7.5rem);
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            line-height: 0.92;
+            color: #fff;
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            transform: translateY(25px);
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 2.5rem;
+            max-width: 440px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero__cta {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.45);
+            padding: 1rem 2.8rem;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero__cta:hover {
+            background: #fff;
+            color: var(--text-primary);
+            border-color: #fff;
+        }
+
+        /* ==================== FADE ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.12s; }
+        .fade-in-delay-2 { transition-delay: 0.24s; }
+        .fade-in-delay-3 { transition-delay: 0.36s; }
+
+        /* ==================== SECTION COMMONS ==================== */
+        .section {
+            padding: 7.5rem 0;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 4vw;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.45em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.18;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-line {
+            width: 50px;
+            height: 1px;
+            background: var(--accent-soft);
+            margin: 2rem 0;
+        }
+
+        /* ==================== ABOUT / CHEF ==================== */
+        .about {
+            background: var(--bg-primary);
+        }
+
+        .about__layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about__image-block {
+            position: relative;
+        }
+
+        .about__image-main {
+            width: 100%;
+            aspect-ratio: 5/6;
+            object-fit: cover;
+            filter: contrast(1.02) saturate(0.95);
+        }
+
+        .about__image-caption {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-style: normal;
+        }
+
+        .about__text {
+            padding-top: 40px;
+        }
+
+        .about__text p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-body);
+            margin-bottom: 1.4rem;
+        }
+
+        .about__signature {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .about__signature-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .about__signature-title {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 0.3rem;
+        }
+
+        /* ==================== PHILOSOPHY ==================== */
+        .philosophy {
+            background: var(--bg-warm);
+            padding: 6.5rem 0;
+            text-align: center;
+        }
+
+        .philosophy__quote {
+            font-family: var(--font-display);
+            font-size: 25px;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.65;
+            color: var(--text-primary);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .philosophy__mark {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 4rem;
+            color: var(--accent-soft);
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .philosophy__attribution {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 2rem;
+        }
+
+        /* ==================== MENU ==================== */
+        .menu {
+            background: var(--bg-primary);
+        }
+
+        .menu__header {
+            margin-bottom: 4rem;
+        }
+
+        .menu__header-text {
+            max-width: 100%;
+            padding-right: 60px;
+        }
+
+        .menu__header-text p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-body);
+        }
+
+        .menu__grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            grid-template-rows: 280px 280px;
+            gap: 1.2rem;
+        }
+
+        .menu__item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu__item:nth-child(1) {
+            grid-row: 1 / 3;
+        }
+
+        .menu__item-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.92) contrast(1.02);
+            transition: all 0.7s ease;
+        }
+
+        .menu__item:hover .menu__item-image {
+            transform: scale(1.03);
+            filter: saturate(1) contrast(1.05);
+        }
+
+        .menu__item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(26,24,21,0.75) 0%, transparent 100%);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .menu__item:hover .menu__item-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .menu__item-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu__item-desc {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ==================== FULL WIDTH IMAGE ==================== */
+        .full-image {
+            position: relative;
+            height: 50vh;
+            min-height: 360px;
+            overflow: hidden;
+        }
+
+        .full-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) saturate(0.9);
+        }
+
+        .full-image__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(26,24,21,0.7) 0%, rgba(26,24,21,0.2) 60%, transparent 100%);
+            display: flex;
+            align-items: center;
+            padding: 0 8vw;
+        }
+
+        .full-image__text {
+            max-width: 400px;
+        }
+
+        .full-image__text h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.35;
+        }
+
+        /* ==================== WINE ==================== */
+        .wine {
+            background: var(--bg-primary);
+        }
+
+        .wine__layout {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .wine__text p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-body);
+            margin-bottom: 1.4rem;
+        }
+
+        .wine__stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .wine__stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .wine__stat-label {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        .wine__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .wine__images img {
+            width: 100%;
+            object-fit: cover;
+            filter: saturate(0.9) contrast(1.02);
+        }
+
+        .wine__images img:first-child {
+            aspect-ratio: 3/4;
+            margin-top: 3rem;
+        }
+
+        .wine__images img:last-child {
+            aspect-ratio: 3/5;
+        }
+
+        /* ==================== INSTAGRAM ==================== */
+        .instagram {
+            background: var(--bg-warm);
+            padding: 5rem 0;
+        }
+
+        .instagram__header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .instagram__handle {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .instagram__handle:hover {
+            color: var(--accent);
+        }
+
+        .instagram__grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+        }
+
+        .instagram__item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .instagram__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.85);
+            transition: all 0.5s ease;
+        }
+
+        .instagram__item:hover img {
+            filter: saturate(1);
+            transform: scale(1.05);
+        }
+
+        /* ==================== RESERVATIONS ==================== */
+        .reservations {
+            background: var(--bg-primary);
+            text-align: center;
+            padding: 9rem 0;
+        }
+
+        .reservations .section-heading {
+            margin-bottom: 1rem;
+        }
+
+        .reservations__text {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--text-body);
+            max-width: 520px;
+            margin: 0 auto 2.8rem;
+        }
+
+        .reservations__cta {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--bg-primary);
+            background: var(--text-primary);
+            padding: 1.1rem 3.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .reservations__cta:hover {
+            background: var(--accent);
+        }
+
+        .reservations__phone-wrap {
+            margin-top: 1.8rem;
+        }
+
+        .reservations__or {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            color: var(--text-light);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.4rem;
+        }
+
+        .reservations__phone {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reservations__phone:hover {
+            color: var(--accent);
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--text-primary);
+            color: var(--bg-warm);
+            padding: 5rem 0 2.5rem;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer__logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer__tagline {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-style: italic;
+            color: rgba(238, 233, 224, 0.45);
+            line-height: 1.6;
+        }
+
+        .footer__heading {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--accent-soft);
+            margin-bottom: 1.2rem;
+        }
+
+        .footer__list {
+            list-style: none;
+        }
+
+        .footer__list li {
+            margin-bottom: 0.55rem;
+        }
+
+        .footer__list a,
+        .footer__list span {
+            font-family: var(--font-sans);
+            font-size: 0.73rem;
+            font-weight: 300;
+            color: rgba(238, 233, 224, 0.6);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: color 0.3s ease;
+        }
+
+        .footer__list a:hover {
+            color: var(--accent-soft);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid rgba(238, 233, 224, 0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__copyright {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            color: rgba(238, 233, 224, 0.3);
+            letter-spacing: 0.08em;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer__social a {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(238, 233, 224, 0.35);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer__social a:hover {
+            color: var(--accent-soft);
+        }
+
+        /* ==================== MOBILE NAV ==================== */
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: rgba(250, 248, 245, 0.98);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.8rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-nav__close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .about__layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .wine__layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .wine__images {
+                order: -1;
+            }
+
+            .menu__grid {
+                gap: 1.5rem;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header__right .header__nav {
+                display: none;
+            }
+
+            .header__hamburger {
+                display: flex;
+            }
+
+            .hero__content {
+                padding-left: 4vw;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+
+            .menu__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu__item--tall {
+                grid-row: span 1;
+            }
+
+            .menu__item-image {
+                min-height: 280px;
+            }
+
+            .instagram__grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .wine__images img:first-child {
+                margin-top: 0;
+            }
+
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer__bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .full-image__text h3 {
+                font-size: 1.5rem;
+            }
+
+            .menu__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .instagram__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wine__stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <a href="#" class="header__logo">Luciana</a>
+        <div class="header__right">
+            <nav class="header__nav">
+                <a href="#about">About</a>
+                <a href="#menu">Menu</a>
+                <a href="#wine">Wine</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href="https://resy.com" target="_blank" rel="noopener" class="header__reserve">Reserve</a>
+            <div class="header__hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav__close" id="mobileNavClose">Close</button>
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#menu" onclick="closeMobileNav()">Menu</a>
+        <a href="#wine" onclick="closeMobileNav()">Wine</a>
+        <a href="#contact" onclick="closeMobileNav()">Contact</a>
+        <a href="https://resy.com" target="_blank" rel="noopener">Reserve a Table</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero__bg">
+            <img src="写真/michelrigottiphotographer-pasta-9450866.jpg" alt="Authentic Italian fine dining cuisine at Luciana, Chicago's premier Italian restaurant">
+        </div>
+        <div class="hero__content">
+            <p class="hero__label">Chicago · Italian Fine Dining</p>
+            <h1 class="hero__title">Luciana</h1>
+            <p class="hero__subtitle">A celebration of Italian culinary tradition, rooted in the heart of Chicago and shaped by the seasons of the Midwest.</p>
+            <a href="https://resy.com" target="_blank" rel="noopener" class="hero__cta">Reserve a Table</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about__layout">
+                <div class="about__image-block fade-in">
+                    <img class="about__image-main" src="写真/シェフ2.jpg" alt="Chef Marco De Luca at Luciana, fine dining Italian restaurant in Chicago">
+                    <p class="about__image-caption">Chef Marco De Luca in the Luciana kitchen</p>
+                </div>
+                <div class="about__text fade-in fade-in-delay-1">
+                    <p class="section-label">Our Story</p>
+                    <h2 class="section-heading">A Chef's Devotion to Italian Craft</h2>
+                    <div class="section-line"></div>
+                    <p>Luciana is a fine dining Italian restaurant in Chicago born from Chef Marco De Luca's lifelong reverence for the Italian table. Raised between Naples and Bologna, Marco brings an understanding of Italian cuisine that is deeply traditional yet quietly modern.</p>
+                    <p>Every dish begins with the ingredient. We partner with Midwestern farms and artisan producers to source what is freshest each season, then apply the techniques of Italian cooking to create something both familiar and revelatory — a dialogue between Italian heritage and Chicago terroir.</p>
+                    <div class="about__signature">
+                        <p class="about__signature-name">Marco De Luca</p>
+                        <p class="about__signature-title">Executive Chef & Founder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy fade-in">
+        <div class="container">
+            <span class="philosophy__mark">"</span>
+            <p class="philosophy__quote">The Italian kitchen does not seek to impress — it seeks to nourish, to comfort, to remind you of something you have always known. At Luciana, we cook not to astonish, but to honor the ingredient, the season, and the hands that brought them to our table.</p>
+            <p class="philosophy__attribution">— Chef Marco De Luca</p>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu section" id="menu">
+        <div class="container">
+            <div class="menu__header fade-in">
+                <div class="menu__header-text">
+                    <p class="section-label">The Menu</p>
+                    <h2 class="section-heading">Seasonal Italian Tasting</h2>
+                    <div class="section-line"></div>
+                    <p>Our multi-course tasting menu evolves with the rhythms of the Midwest growing season, anchored always in the traditions of Italian regional cooking. Each dish is a study in balance — a commitment to letting exceptional produce speak through the lens of Italian fine dining in Chicago.</p>
+                </div>
+            </div>
+            <div class="menu__grid">
+                <div class="menu__item fade-in">
+                    <img class="menu__item-image" src="写真/fabrizio_65-italian-pasta-7432298.jpg" alt="Fresh handmade Italian pasta at Luciana Chicago fine dining restaurant">
+                    <div class="menu__item-info">
+                        <h3 class="menu__item-name">Tagliatelle al Tartufo</h3>
+                        <p class="menu__item-desc">Hand-rolled pasta · Black truffle · Aged Parmigiano</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-1">
+                    <img class="menu__item-image" src="写真/35796437-recipe-8577854.jpg" alt="Signature appetizer at Luciana, best Italian restaurant Chicago">
+                    <div class="menu__item-info">
+                        <h3 class="menu__item-name">Burrata Affumicata</h3>
+                        <p class="menu__item-desc">Heirloom tomato · Basil oil · Aged balsamic</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-2">
+                    <img class="menu__item-image" src="写真/ayindeabdulmajeed44-spaghetti-6639970.jpg" alt="Spaghetti alle vongole at Luciana Chicago Italian fine dining">
+                    <div class="menu__item-info">
+                        <h3 class="menu__item-name">Spaghetti alle Vongole</h3>
+                        <p class="menu__item-desc">Littleneck clams · White wine · Calabrian chili</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-1">
+                    <img class="menu__item-image" src="写真/michelrigottiphotographer-pasta-9450866.jpg" alt="Artisan pasta course at Luciana upscale Italian dining Chicago">
+                    <div class="menu__item-info">
+                        <h3 class="menu__item-name">Pappardelle al Cinghiale</h3>
+                        <p class="menu__item-desc">Wild boar ragù · Pecorino · Rosemary</p>
+                    </div>
+                </div>
+                <div class="menu__item fade-in fade-in-delay-2">
+                    <img class="menu__item-image" src="写真/ylanite-pasta-8211280.jpg" alt="Seasonal risotto at Luciana Italian restaurant Chicago IL">
+                    <div class="menu__item-info">
+                        <h3 class="menu__item-name">Risotto al Nero</h3>
+                        <p class="menu__item-desc">Squid ink · Diver scallop · Lemon zest</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL WIDTH IMAGE BREAK -->
+    <div class="full-image fade-in">
+        <img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Wine experience at Luciana Italian fine dining restaurant Chicago">
+        <div class="full-image__overlay">
+            <div class="full-image__text">
+                <h3>"A great wine does not compete with the food — it completes the conversation."</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- WINE -->
+    <section class="wine section" id="wine">
+        <div class="container">
+            <div class="wine__layout">
+                <div class="wine__text fade-in">
+                    <p class="section-label">The Cellar</p>
+                    <h2 class="section-heading">An Italian Wine Journey</h2>
+                    <div class="section-line"></div>
+                    <p>The wine program at Luciana is a deeply personal collection, assembled over years of travel through Italy's most celebrated and overlooked regions alike. From the nebbiolo of Piedmont to the nerello mascalese of Etna, each bottle is chosen for its ability to illuminate the dish it accompanies.</p>
+                    <p>Our sommelier team crafts pairings that honor the Italian tradition of wine as a companion to food — never a spectacle, always a dialogue. Whether you are drawn to a bold Barolo, a mineral-driven Vermentino, or a rare Aglianico from Campania, Luciana's cellar invites exploration at every level. As Chicago's Italian fine dining destination, we take pride in offering one of the city's most thoughtful Italian wine collections.</p>
+                    <div class="wine__stats">
+                        <div>
+                            <p class="wine__stat-number">400+</p>
+                            <p class="wine__stat-label">Selections</p>
+                        </div>
+                        <div>
+                            <p class="wine__stat-number">18</p>
+                            <p class="wine__stat-label">Italian Regions</p>
+                        </div>
+                        <div>
+                            <p class="wine__stat-number">60</p>
+                            <p class="wine__stat-label">By the Glass</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wine__images fade-in fade-in-delay-1">
+                    <img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Italian wine selection at Luciana Chicago restaurant">
+                    <img src="写真/raeuberleiter-wine-rack-3698774.jpg" alt="Wine cellar at Luciana fine dining Italian restaurant Chicago">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM -->
+    <section class="instagram" id="instagram">
+        <div class="container">
+            <div class="instagram__header fade-in">
+                <p class="section-label" style="text-align:center; margin-bottom:0.6rem;">Follow Us</p>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="instagram__handle">@luciana.chicago</a>
+            </div>
+        </div>
+        <div class="instagram__grid fade-in">
+            <div class="instagram__item"><img src="写真/35796437-recipe-8577854.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/kirtip-italian-food-6371757.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/fabrizio_65-italian-pasta-7432298.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Luciana Chicago Instagram"></div>
+            <div class="instagram__item"><img src="写真/michelrigottiphotographer-pasta-9450866.jpg" alt="Luciana Chicago Instagram"></div>
+        </div>
+    </section>
+
+    <!-- RESERVATIONS -->
+    <section class="reservations section" id="reservations">
+        <div class="container">
+            <div class="reservations__content fade-in">
+                <p class="section-label">Reservations</p>
+                <h2 class="section-heading">Your Table Awaits</h2>
+                <p class="reservations__text">Luciana welcomes guests for dinner Tuesday through Saturday. Reservations are recommended and can be made through Resy. For private dining or parties of eight or more, please contact us directly.</p>
+                <a href="https://resy.com" target="_blank" rel="noopener" class="reservations__cta">Reserve on Resy</a>
+                <div class="reservations__phone-wrap">
+                    <p class="reservations__or">or call us</p>
+                    <a href="tel:+13125550100" class="reservations__phone">+1 (312) 555-0100</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <h3 class="footer__logo">Luciana</h3>
+                    <p class="footer__tagline">Fine dining Italian restaurant in Chicago.<br>A celebration of tradition, shaped by the seasons.</p>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Visit</h4>
+                    <ul class="footer__list">
+                        <li><span>123 N. Michigan Avenue</span></li>
+                        <li><span>Chicago, IL 60601</span></li>
+                        <li><a href="tel:+13125550100">+1 (312) 555-0100</a></li>
+                        <li><a href="mailto:info@luciana-chicago.com">info@luciana-chicago.com</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Hours</h4>
+                    <ul class="footer__list">
+                        <li><span>Tuesday – Thursday</span></li>
+                        <li><span>5:30 PM – 10:00 PM</span></li>
+                        <li><span style="margin-top:0.5rem;display:block;">Friday – Saturday</span></li>
+                        <li><span>5:00 PM – 11:00 PM</span></li>
+                        <li><span style="margin-top:0.5rem;display:block;">Sunday – Monday</span></li>
+                        <li><span>Closed</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer__heading">Explore</h4>
+                    <ul class="footer__list">
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#menu">The Menu</a></li>
+                        <li><a href="#wine">Wine Program</a></li>
+                        <li><a href="https://resy.com" target="_blank" rel="noopener">Reservations</a></li>
+                        <li><a href="#">Private Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2026 Luciana. All rights reserved.</p>
+                <div class="footer__social">
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ====== HEADER SCROLL ====== */
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        /* ====== HERO ENTRANCE ====== */
+        window.addEventListener('load', () => {
+            const hero = document.querySelector('.hero');
+            hero.classList.add('in-view');
+
+            const els = [
+                { el: '.hero__label', delay: 250 },
+                { el: '.hero__title', delay: 500 },
+                { el: '.hero__subtitle', delay: 850 },
+                { el: '.hero__cta', delay: 1150 }
+            ];
+
+            els.forEach(({ el, delay }) => {
+                const node = document.querySelector(el);
+                setTimeout(() => {
+                    node.style.transition = 'opacity 1s ease, transform 1s ease';
+                    node.style.opacity = '1';
+                    node.style.transform = 'translateY(0)';
+                }, delay);
+            });
+        });
+
+        /* ====== SCROLL FADE-IN ====== */
+        const faders = document.querySelectorAll('.fade-in');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        faders.forEach(el => fadeObserver.observe(el));
+
+        /* ====== MOBILE NAV ====== */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', () => mobileNav.classList.add('active'));
+        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('active');
+        }
+    </script>
+</body>
+</html>

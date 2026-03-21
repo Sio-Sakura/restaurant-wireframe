@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the seasonal Italian menu at Luciana, Chicago's premier fine dining destination. Hand-rolled pastas, wood-grilled secondi, curated Italian wines & craft cocktails.">
+    <meta name="keywords" content="Luciana menu, Chicago Italian restaurant menu, fine dining Italian menu Chicago, Italian wine list Chicago, best pasta Chicago">
+    <title>Menu — Luciana | Fine Dining Italian Restaurant Chicago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf8f5;
+            --bg-warm: #f3efe8;
+            --bg-cream: #eee9e0;
+            --text-primary: #1a1815;
+            --text-body: #3d3830;
+            --text-secondary: #6b6358;
+            --text-light: #9a9184;
+            --accent: #8b6914;
+            --accent-soft: #b8944a;
+            --accent-bg: rgba(139, 105, 20, 0.06);
+            --divider: rgba(26, 24, 21, 0.1);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lora', serif;
+            --font-sans: 'Manrope', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            background: var(--bg-primary);
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ==================== HEADER ==================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 4vw;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .header__logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .header__right {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+        }
+
+        .header__nav {
+            display: flex;
+            gap: 2.2rem;
+        }
+
+        .header__nav a {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header__nav a:hover,
+        .header__nav a.active {
+            color: var(--accent);
+        }
+
+        .header__reserve {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: transparent;
+            text-decoration: none;
+            border: 1px solid var(--accent);
+            padding: 0.65rem 1.8rem;
+            transition: all 0.4s ease;
+        }
+
+        .header__reserve:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        .header__hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .header__hamburger span {
+            width: 22px;
+            height: 1px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== MENU PAGE HERO ==================== */
+        .menu-hero {
+            padding-top: 76px;
+            position: relative;
+            height: 50vh;
+            min-height: 380px;
+            max-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-hero__bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .menu-hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+            filter: brightness(0.45) contrast(1.05);
+        }
+
+        .menu-hero__content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 4vw;
+        }
+
+        .menu-hero__title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .menu-hero__subtitle {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==================== SEO INTRO ==================== */
+        .menu-intro {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 4vw 20px;
+            text-align: center;
+        }
+
+        .menu-intro p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.85;
+        }
+
+        /* ==================== TABS ==================== */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 40px 4vw 0;
+            border-bottom: 1px solid var(--divider);
+            max-width: 900px;
+            margin: 0 auto;
+            position: sticky;
+            top: 76px;
+            background: var(--bg-primary);
+            z-index: 100;
+        }
+
+        .menu-tabs button {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            background: none;
+            border: none;
+            padding: 0 0 16px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu-tabs button::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .menu-tabs button.active {
+            color: var(--accent);
+        }
+
+        .menu-tabs button.active::after {
+            transform: scaleX(1);
+        }
+
+        .menu-tabs button:hover {
+            color: var(--accent-soft);
+        }
+
+        /* ==================== TAB CONTENT ==================== */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 4vw 80px;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ==================== MENU SECTIONS ==================== */
+        .menu-section {
+            margin-bottom: 60px;
+        }
+
+        .menu-section__header {
+            margin-bottom: 32px;
+        }
+
+        .menu-section__title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .menu-section__subtitle {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .menu-section__note {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            color: var(--text-light);
+            letter-spacing: 0.08em;
+            margin-top: 6px;
+        }
+
+        /* ==================== MENU ITEMS ==================== */
+        .menu-item {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(26, 24, 21, 0.05);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item__name {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .menu-item__desc {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ==================== DIVIDER ==================== */
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--accent-soft);
+            margin: 50px auto;
+        }
+
+        /* ==================== PHOTO BREAK ==================== */
+        .menu-photo {
+            width: 100%;
+            margin: 50px 0;
+            overflow: hidden;
+            height: 320px;
+        }
+
+        .menu-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.02);
+        }
+
+        .menu-photo--duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            height: 280px;
+        }
+
+        .menu-photo--duo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ==================== WINE TABLE ==================== */
+        .wine-category {
+            margin-bottom: 50px;
+        }
+
+        .wine-category__title {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .wine-region {
+            margin-bottom: 30px;
+        }
+
+        .wine-region__name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--text-body);
+            margin-bottom: 14px;
+        }
+
+        .wine-entry {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 16px;
+            align-items: baseline;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(26, 24, 21, 0.04);
+        }
+
+        .wine-entry__name {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .wine-entry__appellation {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: right;
+        }
+
+        .wine-entry__vintage {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: right;
+            min-width: 40px;
+        }
+
+        /* ==================== COCKTAIL ITEMS ==================== */
+        .cocktail-item {
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(26, 24, 21, 0.05);
+        }
+
+        .cocktail-item:last-child {
+            border-bottom: none;
+        }
+
+        .cocktail-item__name {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .cocktail-item__style {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--accent-soft);
+            margin-bottom: 5px;
+        }
+
+        .cocktail-item__ingredients {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            color: var(--text-light);
+            letter-spacing: 0.06em;
+        }
+
+        /* ==================== FOOTER ==================== */
+        .footer {
+            background: var(--text-primary);
+            color: rgba(255,255,255,0.5);
+            padding: 60px 4vw 40px;
+        }
+
+        .footer__inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer__brand {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 16px;
+        }
+
+        .footer__text {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .footer__heading {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 16px;
+        }
+
+        .footer__link {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__link:hover {
+            color: var(--accent-soft);
+        }
+
+        .footer__bottom {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 0.1em;
+        }
+
+        /* ==================== ANIMATIONS ==================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== MOBILE NAV ==================== */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 76px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent);
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .header__nav {
+                display: none;
+            }
+
+            .header__hamburger {
+                display: flex;
+            }
+
+            .menu-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+
+            .menu-hero__title {
+                font-size: 2rem;
+            }
+
+            .menu-tabs {
+                gap: 1.5rem;
+                padding: 30px 4vw 0;
+            }
+
+            .menu-tabs button {
+                font-size: 0.6rem;
+                letter-spacing: 0.15em;
+            }
+
+            .tab-content {
+                padding: 30px 5vw 60px;
+            }
+
+            .menu-section__title {
+                font-size: 1.3rem;
+            }
+
+            .wine-entry {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .wine-entry__appellation,
+            .wine-entry__vintage {
+                text-align: left;
+            }
+
+            .menu-photo {
+                height: 220px;
+            }
+
+            .menu-photo--duo {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .menu-photo--duo img {
+                height: 200px;
+            }
+
+            .footer__inner {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="WF(White).html" class="header__logo">Luciana</a>
+        <div class="header__right">
+            <nav class="header__nav">
+                <a href="#" class="active">Menu</a>
+                <a href="WF(White).html#wine">Wine</a>
+                <a href="WF(White).html#about">About</a>
+                <a href="#">Events</a>
+                <a href="WF(White).html#contact">Contact</a>
+            </nav>
+            <a href="#reservations" class="header__reserve">Reserve</a>
+            <div class="header__hamburger" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#">Menu</a>
+        <a href="WF(White).html#wine">Wine</a>
+        <a href="WF(White).html#about">About</a>
+        <a href="#">Events</a>
+        <a href="WF(White).html#contact">Contact</a>
+        <a href="https://resy.com" target="_blank" rel="noopener" class="header__reserve">Reserve</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="menu-hero">
+        <div class="menu-hero__bg">
+            <img src="写真/fabrizio_65-italian-pasta-7432298.jpg" alt="Hand-rolled pasta at Luciana Chicago">
+        </div>
+        <div class="menu-hero__content">
+            <h1 class="menu-hero__title">The Menu</h1>
+            <p class="menu-hero__subtitle">Seasonal Italian cuisine, rooted in tradition, shaped by the Midwest</p>
+        </div>
+    </section>
+
+    <!-- SEO INTRO -->
+    <div class="menu-intro fade-in">
+        <p>Explore the seasonal Italian menu at Luciana, Chicago's premier fine dining destination. Our kitchen celebrates the art of hand-made pasta, wood-grilled meats, and the finest seasonal ingredients sourced from Midwestern farms and Italian artisan purveyors. Each dish reflects a commitment to honoring Italian culinary tradition while embracing the terroir of the heartland.</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="menu-tabs">
+        <button class="active" onclick="switchTab('dinner')">Dinner</button>
+        <button onclick="switchTab('wine')">Wine</button>
+        <button onclick="switchTab('cocktails')">Cocktails</button>
+        <button onclick="switchTab('dessert')">Dessert</button>
+    </div>
+
+    <!-- ==================== DINNER TAB ==================== -->
+    <div class="tab-content active" id="tab-dinner">
+
+        <!-- ANTIPASTI -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Antipasti</h2>
+                <p class="menu-section__subtitle">To begin</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Burrata</div>
+                <div class="menu-item__desc">heirloom tomato, aged balsamic, basil oil</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Wagyu Carpaccio</div>
+                <div class="menu-item__desc">truffle aioli, arugula, parmigiano reggiano</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Tuna Crudo</div>
+                <div class="menu-item__desc">citrus, fennel, capers, Sicilian olive oil</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Roasted Beet Salad</div>
+                <div class="menu-item__desc">goat cheese, hazelnuts, honey vinaigrette</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Octopus alla Griglia</div>
+                <div class="menu-item__desc">fingerling potato, olive tapenade, charred lemon</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- PHOTO BREAK -->
+        <div class="menu-photo fade-in">
+            <img src="写真/ayindeabdulmajeed44-spaghetti-6639970.jpg" alt="Fresh spaghetti at Luciana, Italian fine dining Chicago">
+        </div>
+
+        <!-- PASTA -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Pasta</h2>
+                <p class="menu-section__subtitle">Hand-rolled daily, all made in house</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Tagliolini al Ragù</div>
+                <div class="menu-item__desc">slow-braised beef, 30-month parmigiano</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Agnolotti</div>
+                <div class="menu-item__desc">salame calabrese, ricotta filling, cherry tomato, garlic breadcrumbs</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Cappellacci all'Aragosta</div>
+                <div class="menu-item__desc">Maine lobster, saffron cream</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Tortello all'Uovo</div>
+                <div class="menu-item__desc">egg yolk center, spinach and ricotta filling, leeks, maitake</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Spaghetti al Limone</div>
+                <div class="menu-item__desc">blue crab, zucchini, lemon</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Fettuccine al Tartufo</div>
+                <div class="menu-item__desc">black winter truffle, butter</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SECONDI -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Secondi</h2>
+                <p class="menu-section__subtitle">From the grill & oven</p>
+                <p class="menu-section__note">To share — please allow 30 minutes cooking time</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Branzino</div>
+                <div class="menu-item__desc">roasted whole, fingerling potatoes, olives, pine nuts</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Bistecca</div>
+                <div class="menu-item__desc">okaushi wagyu beef strip, salsa verde, haricot verts</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Dry Aged Rohan Duck</div>
+                <div class="menu-item__desc">limited availability, seasonal accompaniment</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Veal Milanese</div>
+                <div class="menu-item__desc">arugula, cherry tomato, shaved parmigiano</div>
+            </div>
+        </div>
+
+        <!-- PHOTO DUO -->
+        <div class="menu-photo menu-photo--duo fade-in">
+            <img src="写真/35796437-recipe-8577854.jpg" alt="Italian cuisine at Luciana restaurant Chicago">
+            <img src="写真/kirtip-italian-food-6371757.jpg" alt="Fine dining dishes at Luciana Chicago">
+        </div>
+
+    </div>
+
+    <!-- ==================== WINE TAB ==================== -->
+    <div class="tab-content" id="tab-wine">
+
+        <!-- BY THE GLASS -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Wine</h2>
+                <p class="menu-section__subtitle">A curated journey through Italy's finest vineyards, selected by our sommelier to complement the seasonal menu at Luciana. Our cellar features over 300 labels, with a focus on small-production Italian estates.</p>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Glass — Sparkling</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">GIUSTI, Prosecco Superiore</div>
+                <div class="wine-entry__appellation">Asolo</div>
+                <div class="wine-entry__vintage">NV</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">TERRAZZE DELL'ETNA, Brut, Blanc de Blancs</div>
+                <div class="wine-entry__appellation">Terre Siciliane</div>
+                <div class="wine-entry__vintage">2019</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">LINI910, Labrusca Rosato, Lambrusco</div>
+                <div class="wine-entry__appellation">Emilia-Romagna</div>
+                <div class="wine-entry__vintage">NV</div>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Glass — White</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Sauvignon Blanc, VIA ALPINA</div>
+                <div class="wine-entry__appellation">Friuli-Venezia Giulia</div>
+                <div class="wine-entry__vintage">2024</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Vermentino, GIANNI GAGLIARDO, Fallegro</div>
+                <div class="wine-entry__appellation">Langhe</div>
+                <div class="wine-entry__vintage">2022</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Gewürtztraminer, RE MANFREDI</div>
+                <div class="wine-entry__appellation">Basilicata</div>
+                <div class="wine-entry__vintage">2024</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Chardonnay, CAFAGGIOLO, Elettrice</div>
+                <div class="wine-entry__appellation">Toscana Bianco</div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Glass — Red</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Pinot Noir, TRAMIN</div>
+                <div class="wine-entry__appellation">Südtirol</div>
+                <div class="wine-entry__vintage">2024</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Nero d'Avola, Feudo Montoni, Lagnusa</div>
+                <div class="wine-entry__appellation">Sicilia</div>
+                <div class="wine-entry__vintage">2021</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Nebbiolo, GUIDO PORRO, Camilu</div>
+                <div class="wine-entry__appellation">Langhe</div>
+                <div class="wine-entry__vintage">2022</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Cabernet Blend, CASANOVA DI NERI, Irrosso</div>
+                <div class="wine-entry__appellation">Toscana</div>
+                <div class="wine-entry__vintage">2023</div>
+            </div>
+        </div>
+
+        <!-- PHOTO -->
+        <div class="menu-photo fade-in">
+            <img src="写真/nadinshlyueva-wine-7046276.jpg" alt="Italian wine selection at Luciana Chicago">
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Glass — Somm's Pick</div>
+            <div class="wine-region">
+                <div class="wine-region__name">Bianco</div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Catarratto, SERGIO DRAGO</div>
+                    <div class="wine-entry__appellation">Sicilia</div>
+                    <div class="wine-entry__vintage">2023</div>
+                </div>
+            </div>
+            <div class="wine-region">
+                <div class="wine-region__name">Rosso</div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Teroldego, FORADORI</div>
+                    <div class="wine-entry__appellation">Vigneti delle Dolomiti</div>
+                    <div class="wine-entry__vintage">2023</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- BY THE BOTTLE -->
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Bottle — Barolo</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Luigi Oddero, Convento</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2018</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Oddero</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2021</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Borgogno</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Elio Grasso, Gavarini Chinera</div>
+                <div class="wine-entry__appellation">Ginestra</div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Brovia, Vigna ca' Mia</div>
+                <div class="wine-entry__appellation">Brea</div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Bartolo Mascarello</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Bottle — Barbaresco</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Deforville</div>
+                <div class="wine-entry__appellation">Loreto</div>
+                <div class="wine-entry__vintage">2021</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Albino Rocca</div>
+                <div class="wine-entry__appellation">Ronchi</div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Bruno Rocca</div>
+                <div class="wine-entry__appellation">Curra</div>
+                <div class="wine-entry__vintage">2021</div>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">By the Bottle — Brunello di Montalcino</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Casanova di Neri</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2020</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Salicutti</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2019</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Poggio di Sotto</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2018</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Il Marroneto</div>
+                <div class="wine-entry__appellation"></div>
+                <div class="wine-entry__vintage">2019</div>
+            </div>
+        </div>
+
+        <div class="wine-category fade-in">
+            <div class="wine-category__title">Sweet & Fortified</div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Florio, Semisecco Riserva</div>
+                <div class="wine-entry__appellation">Marsala Superiore</div>
+                <div class="wine-entry__vintage">2015</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Marchesi di Barolo, Zagara</div>
+                <div class="wine-entry__appellation">Moscato d'Asti</div>
+                <div class="wine-entry__vintage">2022</div>
+            </div>
+            <div class="wine-entry">
+                <div class="wine-entry__name">Donnafugata, Ben Ryé</div>
+                <div class="wine-entry__appellation">Passito di Pantelleria</div>
+                <div class="wine-entry__vintage">2022</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==================== COCKTAILS TAB ==================== -->
+    <div class="tab-content" id="tab-cocktails">
+
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Cocktails</h2>
+                <p class="menu-section__subtitle">Crafted by our bar team — Italian-inspired spirits meet Chicago ingenuity</p>
+            </div>
+        </div>
+
+        <!-- STIRRED & BOOZY -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title" style="font-size: 1.1rem;">Stirred & Boozy</h2>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Luciana Old Fashioned</div>
+                <div class="cocktail-item__style">Split-base variation of the classic</div>
+                <div class="cocktail-item__ingredients">Bourbon | Rye Whiskey | Demerara | Bitters</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Luciana Manhattan</div>
+                <div class="cocktail-item__style">Amaro-infused Manhattan</div>
+                <div class="cocktail-item__ingredients">Rye Whiskey | Vermouth Rosso | Cynar 70 | Bitters</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Negroni Nero</div>
+                <div class="cocktail-item__style">Bitter-forward Negroni with amaro</div>
+                <div class="cocktail-item__ingredients">Bitter Aperitivo | Overproof Gin | Amaro dell'Etna | Fernet</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Martini del Santo</div>
+                <div class="cocktail-item__style">Gin Martini with notes of cucumber, basil & fennel</div>
+                <div class="cocktail-item__ingredients">Gin | Fino Sherry | Basil Eau de Vie | Cucumber | Absinthe | Basil Olive Oil</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- SHAKEN & APPROACHABLE -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title" style="font-size: 1.1rem;">Shaken & Approachable</h2>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Ricotta e Melone</div>
+                <div class="cocktail-item__style">Vodka Sour with cantaloupe and ricotta</div>
+                <div class="cocktail-item__ingredients">Vodka | Lemon | Cantaloupe | Ricotta Spuma | Black Pepper</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Love Language</div>
+                <div class="cocktail-item__style">Blood Orange Margarita with vanilla and spice</div>
+                <div class="cocktail-item__ingredients">Reposado Tequila | Blood Orange Agave | Lime | Vanilla | Lava Salt</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Watermelon Thyme Spritz</div>
+                <div class="cocktail-item__style">Refreshing and floral with notes of rose and hibiscus</div>
+                <div class="cocktail-item__ingredients">Orange Wine | Gentian Amaro | House-made Watermelon & Thyme Liquor | Hibiscus</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Garden Grove</div>
+                <div class="cocktail-item__style">Vegetal Mezcal Sour</div>
+                <div class="cocktail-item__ingredients">Mezcal | Green Chili Vodka | Peach | Lemon | Honey | Basil | Egg White</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Golden Feather</div>
+                <div class="cocktail-item__style">Savory Collins with duck fat, lemongrass and thyme</div>
+                <div class="cocktail-item__ingredients">Duck fat-washed Bourbon | Yuzu | Lemon | Soda | Thyme</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- ZERO-PROOF -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title" style="font-size: 1.1rem;">Zero-Proof</h2>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Aperitivo Spritz</div>
+                <div class="cocktail-item__style">Light, bitter Spritz</div>
+                <div class="cocktail-item__ingredients">N/A Aperitivo | Clarified Citrus | Soda | Orange</div>
+            </div>
+            <div class="cocktail-item">
+                <div class="cocktail-item__name">Lime in the Coconut</div>
+                <div class="cocktail-item__style">Tropical and refreshing Cooler</div>
+                <div class="cocktail-item__ingredients">Lime | Coconut | Soda | Mint</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==================== DESSERT TAB ==================== -->
+    <div class="tab-content" id="tab-dessert">
+
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Dolci</h2>
+                <p class="menu-section__subtitle">To finish — crafted by our pastry team</p>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Apple Tart</div>
+                <div class="menu-item__desc">almond, oat, mascarpone</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Riso al Latte</div>
+                <div class="menu-item__desc">strawberry, granita, strawberry jam</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Pistachio Gelato</div>
+                <div class="menu-item__desc">honey, almond brittle</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Semifreddo</div>
+                <div class="menu-item__desc">passion lime, white chocolate, buckwheat sablée</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Chocolate Custard</div>
+                <div class="menu-item__desc">hazelnut, espresso, praline</div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item__name">Burnt Cheesecake</div>
+                <div class="menu-item__desc">limited quantity</div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- DIGESTIVO -->
+        <div class="menu-section fade-in">
+            <div class="menu-section__header">
+                <h2 class="menu-section__title">Digestivo</h2>
+                <p class="menu-section__subtitle">Grappa, amaro & liqueurs to close the evening</p>
+            </div>
+
+            <div class="wine-category">
+                <div class="wine-category__title">Grappa</div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Nardini, White Label</div>
+                    <div class="wine-entry__appellation">Veneto</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Nardini, Mandorla</div>
+                    <div class="wine-entry__appellation">Veneto</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Trussoni, Grappa di Barolo</div>
+                    <div class="wine-entry__appellation">Piemonte</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+            </div>
+
+            <div class="wine-category">
+                <div class="wine-category__title">Amaro & Liqueurs</div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Amaro Nonino</div>
+                    <div class="wine-entry__appellation">Friuli</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Amaro dell'Etna</div>
+                    <div class="wine-entry__appellation">Sicily</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Braulio</div>
+                    <div class="wine-entry__appellation">Valtellina</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Chartreuse, Green</div>
+                    <div class="wine-entry__appellation">Vauvert, France</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+                <div class="wine-entry">
+                    <div class="wine-entry__name">Lazzaroni, Amaretto</div>
+                    <div class="wine-entry__appellation">Saronno</div>
+                    <div class="wine-entry__vintage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__brand">Luciana</div>
+                <p class="footer__text">A fine dining Italian restaurant in Chicago, rooted in tradition and shaped by the seasons. Michelin-recognized for exceptional pasta, curated Italian wines, and warm hospitality.</p>
+            </div>
+            <div>
+                <div class="footer__heading">Visit</div>
+                <a href="#" class="footer__link">742 N. Wells Street</a>
+                <a href="#" class="footer__link">Chicago, IL 60654</a>
+                <a href="#" class="footer__link" style="margin-top: 12px;">Tue — Sat: 5:30pm — 10:30pm</a>
+                <a href="#" class="footer__link">Sun: 5:00pm — 9:30pm</a>
+            </div>
+            <div>
+                <div class="footer__heading">Connect</div>
+                <a href="#" class="footer__link">Instagram</a>
+                <a href="#" class="footer__link">Facebook</a>
+                <a href="#" class="footer__link">info@lucianachicago.com</a>
+                <a href="#" class="footer__link">(312) 555-0142</a>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            &copy; 2026 Luciana Chicago. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Remove active from all tabs and content
+            document.querySelectorAll('.menu-tabs button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => {
+                tc.classList.remove('active');
+                tc.style.opacity = '0';
+            });
+
+            // Activate clicked tab
+            const buttons = document.querySelectorAll('.menu-tabs button');
+            buttons.forEach(btn => {
+                if (btn.textContent.toLowerCase().trim() === tabName) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show content with fade
+            const content = document.getElementById('tab-' + tabName);
+            if (content) {
+                content.classList.add('active');
+                setTimeout(() => {
+                    content.style.opacity = '1';
+                    // Trigger fade-in animations for elements in view
+                    content.querySelectorAll('.fade-in').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }, 50);
+            }
+
+            // Scroll to tabs
+            document.querySelector('.menu-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Mobile nav
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('open');
+        }
+
+        // Initial fade-in for active tab
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                activeTab.querySelectorAll('.fade-in').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

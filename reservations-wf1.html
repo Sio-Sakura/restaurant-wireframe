@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservations — Wireframe</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Julius+Sans+One&family=Questrial&display=swap" rel="stylesheet">
+<style>
+/* MMMM Rulebook — H1 40pt / H2 38pt / 600 / ALL CAPS
+   Headers: Natasha Walker (temp Cinzel) · CTA: Sackers Gothic (temp Julius) · Body: Optima (temp Questrial)
+   Gold headers #C0A05C · Burgundy band #9B2242 · Champagne #E6CD9C (headers on cream copy)
+   Nav/Footer gold #B8985A + sheen · White section backgrounds · CTA underline = matched text color */
+:root{
+  --burgundy:#9B2242; --gold:#C0A05C; --gold-nav:#B8985A; --champagne:#E6CD9C;
+  --cream:#FBF7ED; --ink:#241D19;
+  --head:'Natasha Walker','Cinzel',serif;
+  --cta:'Sackers Gothic','Julius Sans One',sans-serif;
+  --body:'Optima','Questrial','Candara',sans-serif;
+  --gutter:clamp(24px,5vw,72px);
+  --sheen:linear-gradient(135deg,#B8985A 0%,#C6A76B 28%,#B8985A 52%,#CDB177 70%,#AE8E50 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---- top bar ---- */
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--gutter);background:var(--sheen);color:var(--ink)}
+.bar__res{font-family:var(--cta);font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.bar__logo{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:.18em;text-transform:uppercase}
+.bar__burger{width:26px}
+.bar__burger span{display:block;height:1px;background:var(--ink);margin:6px 0}
+
+/* ---- shared ---- */
+.wrap{max-width:1080px;margin:0 auto}
+.h1{font-family:var(--head);font-weight:600;font-size:40pt;line-height:1.1;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold)}
+.h2{font-family:var(--head);font-weight:600;font-size:38pt;line-height:1.1;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold)}
+.link{color:var(--burgundy);border-bottom:1px solid currentColor}
+.cta-text{display:inline-block;margin-top:28px;padding-bottom:4px;
+  font-family:var(--cta);font-weight:600;font-size:18px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--burgundy);border-bottom:1px solid currentColor}
+.btn{display:inline-block;padding:10px 24px;border-radius:3px;background:var(--burgundy);color:var(--cream);
+  font-family:var(--cta);font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.btn--gold{background:var(--gold)}
+
+/* Default photo style: thin burgundy + gold borders + light drop shadow */
+.photo{border-radius:16px;overflow:hidden;border:2px solid var(--burgundy);
+  box-shadow:0 18px 40px -22px rgba(36,29,25,.45)}
+.photo img{width:100%;height:100%;object-fit:cover}
+
+/* ---- S1 hero: image only, H1 below hero ---- */
+.hero{height:min(62vh,560px);overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover}
+
+/* ---- S2 intro: white, centered ---- */
+.intro{padding:clamp(72px,9vw,120px) var(--gutter);text-align:center;background:#fff}
+.intro .lead{max-width:680px;margin:28px auto 0}
+
+/* ---- S3 form: burgundy band (variation, like the home bands) ---- */
+.band{padding:clamp(72px,9vw,120px) var(--gutter);background:var(--burgundy);text-align:center}
+.form{max-width:720px;margin:0 auto;padding:clamp(28px,4vw,44px);
+  background:#fff;border:2px solid var(--gold);border-radius:16px;
+  box-shadow:0 24px 50px -24px rgba(0,0,0,.5)}
+.form__note{font-family:var(--cta);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--burgundy);margin-bottom:22px}
+.form__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.field{text-align:left}
+.field label{display:block;font-family:var(--cta);font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink);opacity:.7;margin-bottom:8px}
+.field .box{border:1px solid rgba(36,29,25,.25);border-radius:3px;padding:13px 14px;color:rgba(36,29,25,.55)}
+.field--full{grid-column:1 / -1}
+.form .btn{margin-top:26px;width:100%;text-align:center}
+
+/* ---- S4 details: white, two-column ---- */
+.details{padding:clamp(72px,9vw,120px) var(--gutter);background:#fff}
+.details .h2{color:#9B2243}
+.two{display:grid;grid-template-columns:45fr 55fr;gap:clamp(32px,5vw,64px);align-items:center}
+.two .photo{height:400px}
+.two .p+.p{margin-top:1em}
+
+/* ---- S5 footer: matches Home- Rulebook (5 columns) ---- */
+.foot{padding:clamp(56px,7vw,88px) var(--gutter) 28px;background:var(--sheen);color:var(--ink)}
+.foot__grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,3vw,40px)}
+.foot h4{font-family:var(--cta);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.foot h4 span{display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.foot p,.foot a{display:block;font-family:var(--body);font-size:14px;line-height:1.8}
+.foot__social{display:flex;gap:10px;margin-top:4px}
+.foot__social span{width:30px;height:30px;border-radius:50%;border:1px solid var(--ink);display:grid;
+  place-items:center;font-size:11px}
+.foot__bottom{max-width:1080px;margin:40px auto 0;padding-top:18px;border-top:1px solid rgba(36,29,25,.25);
+  font-family:var(--cta);font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.75}
+
+@media (max-width:900px){
+  .two{grid-template-columns:1fr}
+  .form__grid{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar__res">Reservations</div>
+  <div class="bar__logo">MM</div>
+  <div class="bar__burger"><span></span><span></span></div>
+</div>
+
+<!-- S1 — Image Hero -->
+<section class="hero">
+  <img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-italian-pasta.jpg" alt="">
+</section>
+
+<!-- S2 — Intro & How to Dine (H1とイントロを中央揃え) -->
+<section class="intro">
+  <div class="wrap">
+    <h1 class="h1">Reservations</h1>
+    <p class="lead">Explain two ways to dine, choose between the main dining room and Lo Scalco Lounge.
+    For parties up to six people. Call our front desk at xxx-xxx-xxxx to reserve your
+    table, or use the form below.</p>
+  </div>
+</section>
+
+<!-- S3 — Open Table Form Embed (バーガンディの帯で変化をつけた) -->
+<section class="band">
+  <div class="form">
+    <div class="form__grid">
+      <div class="field field--full">
+        <label>Dining room</label>
+        <div class="box">Main Dining ▾ &nbsp;/&nbsp; Lounge</div>
+      </div>
+      <div class="field"><label>Party size</label><div class="box">2 people ▾</div></div>
+      <div class="field"><label>Date</label><div class="box">Select a date ▾</div></div>
+      <div class="field"><label>Time</label><div class="box">7:00 PM ▾</div></div>
+      <div class="field"><label>Seating</label><div class="box">Any ▾</div></div>
+    </div>
+    <a class="btn btn--gold" href="#">Find a Table</a>
+  </div>
+</section>
+
+
+<!-- S4 — Reservations Details -->
+<section class="details">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <h2 class="h2">Things to Know</h2>
+        <p class="p" style="margin-top:24px">For parties over six people, reach out to our private events
+        director at <a class="link" href="mailto:events@mauromafrici.com">events@mauromafrici.com</a> to book
+        one of our private dining rooms.</p>
+        <p class="p">Mention essential policies - parking, children, how long in advance to book, etc.</p>
+        <a class="cta-text" href="#" style="color:#9B2243">View All Policies →</a>
+      </div>
+      <div class="photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-wine.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 — Footer（Home- Rulebookの5カラム構成） -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4><span>Policies →</span></h4>
+      <p>See our Policies for more information on dietary restrictions, cancellations and more.</p>
+    </div>
+    <div>
+      <h4><span>Location →</span></h4>
+      <p>980 North Michigan Avenue<br>Chicago, Illinois 60611</p>
+    </div>
+    <div>
+      <h4><span>Contact →</span></h4>
+      <a href="#">312-366-2020</a>
+      <a href="#">info@mauromafrici.com</a>
+      <a href="#">Join Our Email List</a>
+      <p>Join Our Team</p>
+    </div>
+    <div>
+      <h4><span>Reservations →</span></h4>
+      <p>Open Monday-Saturday,</p>
+      <p>Reservations from 5-9:30 p.m.</p>
+    </div>
+    <div>
+      <h4><span>News &amp; Press →</span></h4>
+      <div class="foot__social"><span>IG</span><span>X</span><span>FB</span></div>
+    </div>
+  </div>
+  <div class="foot__bottom">© 2026 Mauro Mafrici One Magnificent Mile</div>
+</footer>
+
+</body>
+</html>

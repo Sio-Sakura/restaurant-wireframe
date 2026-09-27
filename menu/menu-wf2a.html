@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menus — Wireframe 2a (same frame)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Julius+Sans+One&family=Questrial&display=swap" rel="stylesheet">
+<style>
+/* MMMM Rulebook — H1 40pt / H2 38pt / 600 / ALL CAPS
+   Headers: Natasha Walker (temp Cinzel) · CTA: Sackers Gothic (temp Julius) · Body: Optima (temp Questrial)
+   Gold headers #C0A05C · Burgundy #9B2243 · Nav/Footer gold #B8985A + sheen · White sections
+   Menu Page Outline: no hero · H1 "Menus" centered · cover → click to open → page-turn with arrows,
+   same URL · H2 below each menu (left-align) · Drinks = 1 page · body copy about rotating wine list
+   WF2: page turn = corner peel. The bottom-right corner lifts, the corner travels in an arc
+   (kept inside the book) and the page lands flat on the opposite side; mirrored when going back. */
+:root{
+  --burgundy:#9B2243; --gold:#C0A05C; --gold-nav:#B8985A; --champagne:#E6CD9C;
+  --cream:#FBF7ED; --ink:#241D19;
+  --head:'Natasha Walker','Cinzel',serif;
+  --cta:'Sackers Gothic','Julius Sans One',sans-serif;
+  --body:'Optima','Questrial','Candara',sans-serif;
+  --gutter:clamp(24px,5vw,72px);
+  --sheen:linear-gradient(135deg,#B8985A 0%,#C6A76B 28%,#B8985A 52%,#CDB177 70%,#AE8E50 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---- top bar (as-is) ---- */
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--gutter);background:var(--sheen);color:var(--ink)}
+.bar__res{font-family:var(--cta);font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.bar__logo{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:.18em;text-transform:uppercase}
+.bar__burger{width:26px}
+.bar__burger span{display:block;height:1px;background:var(--ink);margin:6px 0}
+
+/* ---- shared ---- */
+.wrap{max-width:1080px;margin:0 auto}
+.h1{font-family:var(--head);font-weight:600;font-size:40pt;line-height:1.1;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold)}
+.h2{font-family:var(--head);font-weight:600;font-size:38pt;line-height:1.1;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold);text-align:left;margin-top:44px}
+
+/* ---- H1 (no hero) ---- */
+.head-sec{padding:clamp(72px,9vw,110px) var(--gutter) 8px;text-align:center;background:#fff}
+
+/* ---- menu viewer ---- */
+.menu-sec{padding:56px var(--gutter) 40px;background:#fff}
+.stage{position:relative;max-width:372px;margin:0 auto}
+.book{position:relative;width:100%;aspect-ratio:612/792;perspective:2200px}
+
+.page{position:absolute;inset:0;visibility:hidden}
+.stage.lit .page{visibility:visible}
+
+.pageface{position:absolute;inset:0;background:#FDFBF4;border:1px solid rgba(192,160,92,.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;
+  box-shadow:0 22px 44px -26px rgba(36,29,25,.4)}
+.page .pageface,.leaf .face .pageface,.cover .face--back .pageface{border-radius:10px}
+.page .pageface::after{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:30px;
+  background:linear-gradient(to right,rgba(36,29,25,.10),transparent)}
+
+.pageface--img{padding:0;overflow:hidden}
+.pageface--img img{width:100%;height:100%;object-fit:cover;display:block}
+
+.pageface--menu{padding:0;overflow:hidden}
+.mp{position:absolute;inset:0;display:flex;flex-direction:column;background:#FDFBF4}
+.mp__photo{height:30%;flex:none;overflow:hidden}
+.mp__photo img{width:100%;height:100%;object-fit:cover;display:block}
+.mp__body{flex:1;min-height:0;padding:17px 24px 12px;display:flex;flex-direction:column}
+.mp__brand{font-family:var(--head);font-weight:600;font-size:11px;letter-spacing:.3em;
+  color:var(--burgundy);text-transform:uppercase;text-align:center}
+.mp__sec{font-family:var(--head);font-weight:600;font-size:18px;letter-spacing:.18em;
+  color:var(--gold);text-transform:uppercase;text-align:center;margin:6px 0 5px}
+.mp__rule{width:53px;height:1px;background:var(--gold);margin:0 auto 11px}
+.mp__item{margin-bottom:11px}
+.mp__row{display:flex;align-items:baseline;gap:6px}
+.mp__name{font-family:var(--head);font-weight:600;font-size:12.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.mp__dots{flex:1;border-bottom:1px dotted rgba(36,29,25,.35);transform:translateY(-2px)}
+.mp__price{font-family:var(--cta);font-size:11.5px;color:var(--burgundy)}
+.mp__desc{font-size:11px;line-height:1.5;color:rgba(36,29,25,.6);font-style:italic}
+.mp__num{margin-top:auto;text-align:center;font-family:var(--cta);font-size:9.5px;
+  letter-spacing:.24em;color:rgba(36,29,25,.4);padding-top:6px}
+
+.pf__head{font-family:var(--head);font-weight:600;font-size:13px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold)}
+.pf__lines{width:100%;display:flex;flex-direction:column;gap:12px;align-items:center;margin:20px 0}
+.pf__lines i{display:block;height:7px;background:rgba(36,29,25,.12);border-radius:4px}
+.pf__num{font-family:var(--cta);font-size:10px;letter-spacing:.24em;color:rgba(36,29,25,.45)}
+
+/* turning leaf + cover share face mechanics */
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face--back{transform:rotateY(180deg)}
+/* peel overlay: __top = turning page with the folded part clipped away,
+   __flap = folded-back part (shows the NEXT page's back, reflected across the fold line).
+   Geometry is computed per-frame in JS; overflow keeps the peel inside the book. */
+.turn{position:absolute;inset:0;z-index:6;visibility:hidden;pointer-events:none;overflow:hidden}
+.turn__top,.turn__flap{position:absolute;top:0;left:0;width:100%;height:100%}
+.turn__flap{transform-origin:0 0;filter:drop-shadow(0 12px 18px rgba(36,29,25,.35))}
+.turn__flapin{position:absolute;inset:0;transform:scaleX(-1)}
+.turn__flapin .pageface{border-radius:10px;box-shadow:none;background:#F6F1E4}
+.turn__shade{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.45),rgba(36,29,25,.10) 55%,rgba(36,29,25,.20))}
+.turn__top .pageface{border-radius:10px}
+.turn--prev .turn__top .pageface{border-radius:10px 0 0 10px}
+
+.cover{position:absolute;inset:0;transform-origin:left center;
+  transform-style:preserve-3d;transform:rotateY(0);cursor:pointer;z-index:5;
+  transition:transform .9s cubic-bezier(.4,.1,.2,1)}
+.stage.open .cover{cursor:default}
+.coverart{position:absolute;inset:0;background:var(--burgundy);border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  color:var(--champagne);box-shadow:0 26px 48px -24px rgba(36,29,25,.55)}
+.coverart::after{content:'';position:absolute;inset:12px;border:1px solid rgba(230,205,156,.6);border-radius:5px}
+.coverart__mm{font-family:var(--head);font-weight:600;font-size:41px;letter-spacing:.18em}
+.coverart__title{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:.14em;text-transform:uppercase}
+.coverart__sub{font-family:var(--cta);font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.7}
+
+/* thin arrows, appear when open */
+.arrow{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;
+  font-family:'Questrial',sans-serif;font-weight:100;font-size:46px;line-height:1;color:rgba(36,29,25,.55);
+  opacity:0;pointer-events:none;transition:opacity .4s;padding:8px}
+.arrow--prev{left:-64px}
+.arrow--next{right:-64px}
+.stage.open .arrow{opacity:1;pointer-events:auto}
+.stage.open .arrow.is-off{opacity:.2;pointer-events:none}
+
+.hint{font-family:var(--cta);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(36,29,25,.45);text-align:center;margin-top:22px}
+
+.wine-copy{max-width:680px;margin:18px 0 0;color:rgba(36,29,25,.55);font-style:italic}
+
+.divider{height:55px;margin-top:60px;margin-bottom:60px;background:url('../divider-a.png') center/cover no-repeat}
+/* covers only (palette, non-gold): Dessert = Terracotta #BA3E15, Drinks = Dark Purple #4B1932 */
+.coverart--dessert{background:#BA3E15;color:var(--cream)}
+.coverart--dessert::after{border-color:rgba(251,247,237,.55)}
+.coverart--drinks{background:#4B1932;color:var(--champagne)}
+.coverart--drinks::after{border-color:rgba(230,205,156,.5)}
+
+/* ---- footer: Home- Rulebook 5 columns ---- */
+.foot{margin-top:56px;padding:clamp(56px,7vw,88px) var(--gutter) 28px;background:var(--sheen);color:var(--ink)}
+.foot__grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(20px,3vw,40px)}
+.foot h4{font-family:var(--cta);font-weight:600;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.foot h4 span{display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.foot p,.foot a{display:block;font-family:var(--body);font-size:14px;line-height:1.8}
+.foot__social{display:flex;gap:10px;margin-top:4px}
+.foot__social span{width:30px;height:30px;border-radius:50%;border:1px solid var(--ink);display:grid;
+  place-items:center;font-size:11px}
+.foot__bottom{max-width:1080px;margin:40px auto 0;padding-top:18px;border-top:1px solid rgba(36,29,25,.25);
+  font-family:var(--cta);font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.75}
+
+@media (max-width:760px){
+  .arrow--prev{left:2px;z-index:10}
+  .arrow--next{right:2px;z-index:10}
+  .foot__grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar__res">Reservations</div>
+  <div class="bar__logo">MM</div>
+  <div class="bar__burger"><span></span><span></span></div>
+</div>
+
+<!-- H1, centered -->
+<section class="head-sec">
+  <h1 class="h1">Menus</h1>
+</section>
+
+<!-- [PDF of Dinner Menu] + H2 left-align -->
+<section class="menu-sec">
+  <div class="wrap">
+    <div class="stage" data-title="Dinner Menu" data-pages="4" data-img="menu-test/dinner">
+      <button class="arrow arrow--prev" aria-label="Previous page">&#8249;</button>
+      <div class="book">
+        <div class="page"></div>
+        <div class="turn"><div class="turn__top"></div>
+          <div class="turn__flap"><div class="turn__flapin"></div><div class="turn__shade"></div></div></div>
+        <div class="cover">
+          <div class="face face--front">
+            <div class="coverart"><span class="coverart__mm">MM</span>
+              <span class="coverart__title">Dinner Menu</span>
+              <span class="coverart__sub">One Magnificent Mile</span></div>
+          </div>
+          <div class="face face--back"></div>
+        </div>
+      </div>
+      <button class="arrow arrow--next" aria-label="Next page">&#8250;</button>
+    </div>
+    <p class="hint">Click the cover to open</p>
+    <h2 class="h2">Dinner Menu</h2>
+  </div>
+</section>
+
+<!-- [PDF of Dessert Menu] + H2 -->
+<div class="divider"></div>
+
+<section class="menu-sec">
+  <div class="wrap">
+    <div class="stage" data-title="Dessert Menu" data-pages="2" data-img="menu-test/dessert">
+      <button class="arrow arrow--prev" aria-label="Previous page">&#8249;</button>
+      <div class="book">
+        <div class="page"></div>
+        <div class="turn"><div class="turn__top"></div>
+          <div class="turn__flap"><div class="turn__flapin"></div><div class="turn__shade"></div></div></div>
+        <div class="cover">
+          <div class="face face--front">
+            <div class="coverart coverart--dessert"><span class="coverart__mm">MM</span>
+              <span class="coverart__title">Dessert Menu</span>
+              <span class="coverart__sub">One Magnificent Mile</span></div>
+          </div>
+          <div class="face face--back"></div>
+        </div>
+      </div>
+      <button class="arrow arrow--next" aria-label="Next page">&#8250;</button>
+    </div>
+    <p class="hint">Click the cover to open</p>
+    <h2 class="h2">Dessert Menu</h2>
+  </div>
+</section>
+
+<!-- [PDF of Drinks Menu] + H2 + body copy -->
+<div class="divider"></div>
+
+<section class="menu-sec">
+  <div class="wrap">
+    <div class="stage" data-title="Drinks Menu" data-pages="1" data-img="menu-test/drinks">
+      <button class="arrow arrow--prev" aria-label="Previous page">&#8249;</button>
+      <div class="book">
+        <div class="page"></div>
+        <div class="turn"><div class="turn__top"></div>
+          <div class="turn__flap"><div class="turn__flapin"></div><div class="turn__shade"></div></div></div>
+        <div class="cover">
+          <div class="face face--front">
+            <div class="coverart coverart--drinks"><span class="coverart__mm">MM</span>
+              <span class="coverart__title">Drinks Menu</span>
+              <span class="coverart__sub">One Magnificent Mile</span></div>
+          </div>
+          <div class="face face--back"></div>
+        </div>
+      </div>
+      <button class="arrow arrow--next" aria-label="Next page">&#8250;</button>
+    </div>
+    <p class="hint">Click the cover to open</p>
+    <h2 class="h2">Drinks Menu</h2>
+    <p class="wine-copy">Body copy - about rotating wine list</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div>
+      <h4><span>Policies &#8594;</span></h4>
+      <p>See our Policies for more information on dietary restrictions, cancellations and more.</p>
+    </div>
+    <div>
+      <h4><span>Location &#8594;</span></h4>
+      <p>980 North Michigan Avenue<br>Chicago, Illinois 60611</p>
+    </div>
+    <div>
+      <h4><span>Contact &#8594;</span></h4>
+      <a href="#">312-366-2020</a>
+      <a href="#">info@mauromafrici.com</a>
+      <a href="#">Join Our Email List</a>
+      <p>Join Our Team</p>
+    </div>
+    <div>
+      <h4><span>Reservations &#8594;</span></h4>
+      <p>Open Monday-Saturday,</p>
+      <p>Reservations from 5-9:30 p.m.</p>
+    </div>
+    <div>
+      <h4><span>News &amp; Press &#8594;</span></h4>
+      <div class="foot__social"><span>IG</span><span>X</span><span>FB</span></div>
+    </div>
+  </div>
+  <div class="foot__bottom">&copy; 2026 Mauro Mafrici One Magnificent Mile</div>
+</footer>
+
+<script>
+
+  /* sample Italian menu content (mock dishes for the flip test — not client copy) */
+  var MENUS = {
+    'Dinner Menu': [
+      {photo:'https://mauromafrici.com/wp-content/uploads/2026/09/v2-italian-pasta.jpg',sec:'Antipasti',items:[
+        ['Crudo di Branzino','mediterranean sea bass, meyer lemon, olio nuovo','24'],
+        ['Burrata e Prosciutto','creamy burrata, 24-month prosciutto di parma','26'],
+        ['Polpo alla Griglia','grilled octopus, cannellini beans, salsa verde','25']]},
+      {sec:'Primi',items:[
+        ['Tagliatelle al Tartufo','hand-cut pasta, black truffle, parmigiano','38'],
+        ['Risotto allo Zafferano','carnaroli rice, saffron, bone marrow','34'],
+        ['Agnolotti del Plin','braised veal agnolotti, sage butter','36'],
+        ['Spaghetti alle Vongole','manila clams, white wine, calabrian chili','32']]},
+      {sec:'Secondi',items:[
+        ['Branzino al Forno','whole roasted sea bass, salmoriglio','48'],
+        ['Ossobuco alla Milanese','braised veal shank, saffron risotto, gremolata','56'],
+        ['Filetto di Manzo','beef tenderloin, barolo reduction, porcini','58']]},
+      {photo:'https://mauromafrici.com/wp-content/uploads/2026/09/v2-italian-food.jpg',sec:'Contorni',items:[
+        ['Patate al Rosmarino','crispy potatoes, rosemary, sea salt','14'],
+        ['Spinaci Saltati','sauteed spinach, garlic, lemon','13'],
+        ['Funghi Trifolati','roasted mushrooms, thyme, marsala','15']]}
+    ],
+    'Dessert Menu': [
+      {photo:'https://mauromafrici.com/wp-content/uploads/2026/09/v2-recipe.jpg',sec:'Dolci',items:[
+        ['Tiramisu Classico','espresso, mascarpone, savoiardi','16'],
+        ['Panna Cotta','vanilla bean, amarena cherries','14'],
+        ['Cannolo Siciliano','ricotta, pistachio, candied orange','15']]},
+      {sec:'Formaggi & Vini Dolci',items:[
+        ['Selezione di Formaggi','italian cheeses, chestnut honey, mostarda','24'],
+        ['Affogato','vanilla gelato, espresso','12'],
+        ['Vin Santo e Cantucci','tuscan dessert wine, almond biscotti','18']]}
+    ],
+    'Drinks Menu': [
+      {photo:'https://mauromafrici.com/wp-content/uploads/2026/09/v2-wine.jpg',sec:'Vini & Cocktails',items:[
+        ['Barolo DOCG, Piemonte','nebbiolo — glass','28'],
+        ['Brunello di Montalcino','sangiovese grosso — glass','26'],
+        ['Chianti Classico Riserva','sangiovese — glass','18'],
+        ['Prosecco Superiore','valdobbiadene brut','15'],
+        ['Negroni Classico','gin, campari, vermouth di torino','18'],
+        ['Aperol Spritz','aperol, prosecco, soda','16']]}
+    ]
+  };
+
+document.querySelectorAll('.stage').forEach(function(stage){
+  var title = stage.dataset.title;
+  var total = parseInt(stage.dataset.pages, 10);
+  var st = -1, busy = false;
+  var P = stage.querySelector('.page');
+  var book = stage.querySelector('.book');
+  var turn = stage.querySelector('.turn');
+  var turnTop = stage.querySelector('.turn__top');
+  var flap = stage.querySelector('.turn__flap');
+  var flapin = stage.querySelector('.turn__flapin');
+  var cover = stage.querySelector('.cover');
+  var coverBack = cover.querySelector('.face--back');
+  var prev = stage.querySelector('.arrow--prev');
+  var next = stage.querySelector('.arrow--next');
+  var BLANK = '<div class="pageface"></div>';
+
+  function pageHTML(n){
+    if (n > total) return '<div class="pageface"></div>';
+    var d = (MENUS[title] || [])[n - 1];
+    if (!d) return '<div class="pageface"></div>';
+    var h = '<div class="pageface pageface--menu"><div class="mp">';
+    if (d.photo) h += '<div class="mp__photo"><img src="' + d.photo + '" alt=""></div>';
+    h += '<div class="mp__body"><div class="mp__brand">Mauro Mafrici</div>' +
+         '<div class="mp__sec">' + d.sec + '</div><div class="mp__rule"></div>';
+    d.items.forEach(function(it){
+      h += '<div class="mp__item"><div class="mp__row"><span class="mp__name">' + it[0] +
+           '</span><span class="mp__dots"></span><span class="mp__price">' + it[2] + '</span></div>' +
+           (it[1] ? '<div class="mp__desc">' + it[1] + '</div>' : '') + '</div>';
+    });
+    h += '<div class="mp__num">' + n + ' / ' + total + '</div></div></div>';
+    return h;
+  }
+
+  coverBack.innerHTML = BLANK;
+  function ui(){ next.classList.toggle('is-off', st >= total - 1); }
+
+  function polyStr(pts){
+    if (pts.length < 3) return 'polygon(0px 0px,0px 0px,0px 0px)';
+    return 'polygon(' + pts.map(function(p){ return p[0].toFixed(2) + 'px ' + p[1].toFixed(2) + 'px'; }).join(',') + ')';
+  }
+  function clipHalf(w, h, M, n, side){
+    var rect = [[0,0],[w,0],[w,h],[0,h]], out = [];
+    for (var i = 0; i < 4; i++){
+      var a = rect[i], b = rect[(i+1)%4];
+      var da = side*((a[0]-M[0])*n[0] + (a[1]-M[1])*n[1]);
+      var db = side*((b[0]-M[0])*n[0] + (b[1]-M[1])*n[1]);
+      if (da >= 0) out.push(a);
+      if ((da > 0 && db < 0) || (da < 0 && db > 0)){
+        var f = da/(da-db);
+        out.push([a[0]+f*(b[0]-a[0]), a[1]+f*(b[1]-a[1])]);
+      }
+    }
+    return out;
+  }
+  /* OPTION 2: corner peel in place — frame size never changes.
+     dir 1 = peel current page away (bottom-right corner); dir -1 = previous page unfolds back. */
+  function playTurn(dir, topHTML, onDone){
+    var w = book.clientWidth, h = book.clientHeight;
+    var lam = Math.min(.92*h/w, .92);
+    turnTop.innerHTML = topHTML;
+    flapin.innerHTML = BLANK;
+    turn.style.visibility = 'visible';
+    var t0 = null, D = 1100;
+    function frame(ts){
+      if (!t0) t0 = ts;
+      var t = Math.min((ts - t0)/D, 1);
+      var e = t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+      var u = dir > 0 ? e : 1 - e;
+      var phi = Math.PI * Math.min(Math.max(u, .015), .985);
+      var C = [w, h], Pt = [w*Math.cos(phi), h - w*lam*Math.sin(phi)];
+      var M = [(C[0]+Pt[0])/2, (C[1]+Pt[1])/2];
+      var n = [C[0]-Pt[0], C[1]-Pt[1]];
+      turnTop.style.clipPath = polyStr(clipHalf(w, h, M, n, -1));
+      flap.style.clipPath = polyStr(clipHalf(w, h, M, n, 1));
+      var len = Math.hypot(n[0], n[1]) || 1;
+      var dx = -n[1]/len, dy = n[0]/len;
+      var a = dx*dx-dy*dy, b = 2*dx*dy, c = b, d = dy*dy-dx*dx;
+      var e2 = M[0]-(a*M[0]+c*M[1]), f2 = M[1]-(b*M[0]+d*M[1]);
+      flap.style.transform = 'matrix('+a+','+b+','+c+','+d+','+e2+','+f2+')';
+      if (t < 1){ requestAnimationFrame(frame); }
+      else { turn.style.visibility = 'hidden'; onDone(); }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var coverHTML = cover.querySelector('.coverart').outerHTML;
+
+  cover.addEventListener('click', function(){
+    if (busy || st > -1) return;
+    busy = true;
+    P.innerHTML = pageHTML(1);
+    stage.classList.add('lit');
+    stage.classList.add('open');
+    cover.style.visibility = 'hidden';
+    playTurn(1, coverHTML, function(){ st = 0; busy = false; ui(); });
+  });
+
+  next.addEventListener('click', function(){
+    if (busy || st < 0 || st >= total - 1) return;
+    busy = true;
+    P.innerHTML = pageHTML(st + 2);
+    playTurn(1, pageHTML(st + 1), function(){ st++; busy = false; ui(); });
+  });
+
+  prev.addEventListener('click', function(){
+    if (busy || st < 0) return;
+    if (st === 0){
+      busy = true;
+      playTurn(-1, coverHTML, function(){
+        cover.style.visibility = 'visible';
+        stage.classList.remove('lit');
+        stage.classList.remove('open');
+        st = -1; busy = false; ui();
+      });
+      return;
+    }
+    busy = true;
+    playTurn(-1, pageHTML(st), function(){
+      P.innerHTML = pageHTML(st);
+      st--; busy = false; ui();
+    });
+  });
+});
+</script>
+</body>
+</html>

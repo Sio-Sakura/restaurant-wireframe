@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &amp; Press — Wireframe 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600&family=Julius+Sans+One&display=swap" rel="stylesheet">
+<style>
+/* Sources
+   Copy + structure: Andrew's "Final Webpage Outlines | One MM" doc, News & Press tab (copy and notes used word for word)
+   Rules: MMMM Site Rulebook sheet (Current tab) + the Home- Rulebook page in WordPress
+   H1 40 / 36 / 28px · H2 38 / 34 / 26px (Desktop / Tablet / Mobile) · 600 · ALL CAPS · body 18px
+   Headers: Natasha Walker · CTA: Julius Sans One · Body: Arsenal
+   Gold headers #C0A05C · Burgundy #9B2243 · Nav/Footer gold #B8985A + sheen · White section backgrounds
+   Photos: thin 2px border matching the header color, radius 16, drop shadow 0 8px 24px rgba(0,0,0,.3), 65% wide and 5% into the margin
+   Section padding 120 / 120 (40 on top after another white section) · sides 24 · max width 1080 · rows 80 apart */
+@font-face{font-family:'Natasha Walker';src:url('https://mauromafrici.com/wp-content/uploads/2026/09/NatashaWalker-Regular.otf') format('opentype');font-display:swap}
+:root{
+  --burgundy:#9B2243; --gold:#C0A05C; --gold-nav:#B8985A; --champagne:#E6CD9C;
+  --cream:#FBF7ED; --ink:#241D19;
+  --head:'Natasha Walker','Cinzel',serif;
+  --cta:'Julius Sans One',sans-serif;
+  --body:'Arsenal',sans-serif;
+  --sheen:linear-gradient(135deg,#B8985A 0%,#C6A76B 28%,#B8985A 52%,#CDB177 70%,#AE8E50 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---- top bar ---- */
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;background:var(--sheen);color:var(--ink)}
+.bar__res{font-family:var(--cta);font-size:13px;letter-spacing:.28em;text-transform:uppercase;line-height:1.9}
+.bar__res span{display:inline-block;border-bottom:1px solid var(--ink)}
+.bar__logo{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:.18em;text-transform:uppercase}
+.bar__burger{width:26px}
+.bar__burger span{display:block;height:1px;background:var(--ink);margin:6px 0}
+
+/* ---- shared ---- */
+.sec{padding:120px 24px;background:#fff}
+.sec--after{padding-top:40px}
+.wrap{max-width:1080px;margin:0 auto}
+.h1,.h2{font-family:var(--head);font-weight:600;line-height:1.2;text-transform:uppercase;color:var(--gold)}
+.h1{font-size:40px;line-height:1.3}
+.h2{font-size:38px}
+.h2--burgundy{color:var(--burgundy)}
+.h3{font-family:var(--head);font-weight:600;font-size:36px;line-height:1.2;text-transform:uppercase;color:var(--gold)}
+.optional{color:rgba(36,29,25,.55);font-style:italic}
+.link{color:var(--burgundy);border-bottom:1px solid currentColor}
+/* text CTA, same as on the Home- Rulebook page: Julius Sans One 18px, underline in the text color, arrow */
+.cta{display:inline-block;padding-top:16px;border-bottom:1px solid currentColor;color:var(--gold);
+  font-family:var(--cta);font-weight:600;font-size:18px;line-height:1.2;letter-spacing:2px;text-transform:uppercase}
+.btn{display:inline-block;padding:10px 24px;border-radius:3px;background:var(--gold);color:var(--cream);
+  font-family:var(--cta);font-weight:600;font-size:14px;line-height:1.5;letter-spacing:2px;text-transform:uppercase}
+
+/* ---- S1 intro: no hero image on this page, centered header + copy ---- */
+.intro{text-align:center}
+.intro .p{max-width:760px;margin:32px auto 0}
+
+/* ---- S2 featured post: one tile in a rectangular box, built like the Email sign-up block on the Contact page
+   (2px burgundy border, radius 16, drop shadow, burgundy panel with a thin champagne frame, champagne header, cream copy, gold button) ---- */
+.feat{display:flex;align-items:stretch;border:2px solid var(--burgundy);border-radius:16px;overflow:hidden;
+  box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.feat__img{width:55%;min-height:450px}
+.feat__img img{width:100%;height:100%;object-fit:cover}
+.feat__panel{width:45%;padding:10px;background:var(--burgundy);display:flex}
+.feat__inner{width:100%;padding:34px;border:1px solid rgba(230,205,156,.55);border-radius:10px;
+  display:flex;flex-direction:column;gap:16px;justify-content:center;color:var(--cream)}
+.feat__inner .h2,.feat__inner .h3{color:var(--champagne)}
+.feat__inner .optional{color:rgba(251,247,237,.7)}
+.feat__inner .cta{align-self:flex-start;color:var(--champagne)}
+
+/* ---- divider: same as the Home- Rulebook page (60px tall strip of the original wallpaper photo) ---- */
+.divider{height:60px;overflow:hidden;background:var(--burgundy)}
+.divider img{width:100%;height:120px;object-fit:cover;object-position:center center}
+
+/* ---- S3 blog tiles: 3 across down the page, laid out like Andrew's example (image, publish date, title, description, Read More with arrow) ---- */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:80px 48px}
+.tile{display:flex;flex-direction:column;gap:16px}
+.tile__img{aspect-ratio:4 / 3;border-radius:16px;overflow:hidden;border:2px solid var(--gold);
+  box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.tile__img img{width:100%;height:100%;object-fit:cover}
+.tile__date{margin-top:16px}
+.tile .cta{align-self:flex-start}
+
+/* ---- S6 footer (same as the built pages) ---- */
+.foot{padding:64px 24px;background:var(--sheen);color:var(--ink)}
+.foot__grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.3fr 1fr;gap:32px}
+.foot h4{font-family:var(--cta);font-weight:400;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.foot h4 span{display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.foot p{font-family:var(--body);font-size:14px;line-height:1.9}
+.foot__social{display:flex;gap:10px;margin-top:4px}
+.foot__social span{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--gold-nav);display:grid;
+  place-items:center;font-family:var(--cta);font-size:10px}
+
+/* ---- Tablet ---- */
+@media (max-width:1024px){
+  .h1{font-size:36px}
+  .h2{font-size:34px}
+  .h3{font-size:32px}
+  .feat{flex-direction:column}
+  .feat__img,.feat__panel{width:100%}
+  .feat__img{min-height:0;height:450px}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .foot__grid{grid-template-columns:repeat(3,1fr);gap:40px 32px}
+}
+/* ---- Mobile ---- */
+@media (max-width:767px){
+  .h1{font-size:28px}
+  .h2{font-size:26px}
+  .h3{font-size:24px}
+  .feat__img{height:400px}
+  .feat__inner{padding:24px}
+  .tiles{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr}
+  .foot p{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar__res"><span>Reservations</span><br>312-366-2020</div>
+  <div class="bar__logo">MM</div>
+  <div class="bar__burger"><span></span><span></span></div>
+</div>
+
+<!-- Section 1 — Intro (no image in the hero section) -->
+<section class="sec intro">
+  <div class="wrap">
+    <h1 class="h1">News &amp; Press</h1>
+    <p class="p optional">Optional body copy, describing recent articles we’ve written and in the news.</p>
+  </div>
+</section>
+
+<!-- Section 2 — Featured Post: one tile in a rectangular box, similar to the Email sign-up block on the Contact page -->
+<section class="sec sec--after">
+  <div class="wrap">
+    <article class="feat">
+      <div class="feat__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-spaghetti.jpg" alt="Image from the post"></div>
+      <div class="feat__panel">
+        <div class="feat__inner">
+          <h2 class="h2">Featured Post</h2>
+          <p class="optional">Publish Date</p>
+          <h3 class="h3">Title of Post</h3>
+          <p class="optional">Meta / Description</p>
+          <a class="cta" href="#">Read More &#8594;</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/Wallpaper-Updated-Ligher-OneMM.jpeg" alt=""></div>
+
+<!-- Section 3 — Blog Tiles: 3 across down the page -->
+<section class="sec">
+  <div class="wrap tiles">
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-italian-pasta.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-wine-rack.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-chef.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/05.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-pizza.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+      <article class="tile">
+        <div class="tile__img"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/v2-recipe.jpg" alt=""></div>
+        <p class="optional tile__date">Publish Date</p>
+        <h3 class="h3">Title of Post</h3>
+        <p class="optional">Description</p>
+        <a class="cta" href="#">Read More &#8594;</a>
+      </article>
+  </div>
+</section>
+
+<!-- Section 4 — Footer -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div class="foot__col">
+      <h4><span>Policies &#8594;</span></h4>
+      <p>See our Policies for more information on dietary restrictions, cancellations and more.</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>Location &#8594;</span></h4>
+      <p>980 N. Michigan Avenue</p>
+      <p>Suite 230</p>
+      <p>Chicago, IL 60611</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>Contact &#8594;</span></h4>
+      <p>312-366-2020</p>
+      <p>info@mauromafrici.com</p>
+      <p>Join Our Email List</p>
+      <p>Join Our Team</p>
+    </div>
+    <div class="foot__col foot__col--res">
+      <h4><span>Reservations &#8594;</span></h4>
+      <p>Open for Dinner</p>
+      <p>Monday-Thursday, 5:00 to 9:00</p>
+      <p>Friday-Saturday, 5:00 to 9:30</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>News &amp; Press &#8594;</span></h4>
+      <div class="foot__social"><span>FB</span><span>IG</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Vision — Wireframe 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;600&family=Julius+Sans+One&display=swap" rel="stylesheet">
+<style>
+/* Sources
+   Copy + structure: Andrew's "Final Webpage Outlines | One MM" doc, Design Vision tab (copy and notes used word for word)
+   Rules: MMMM Site Rulebook sheet (Current tab) + the Home- Rulebook page in WordPress
+   H1 40 / 36 / 28px · H2 38 / 34 / 26px (Desktop / Tablet / Mobile) · 600 · ALL CAPS · body 18px
+   Headers: Natasha Walker · CTA: Julius Sans One · Body: Arsenal
+   Gold headers #C0A05C · Burgundy #9B2243 · Nav/Footer gold #B8985A + sheen · White section backgrounds
+   Photos: thin 2px border matching the header color, radius 16, drop shadow 0 8px 24px rgba(0,0,0,.3), 65% wide and 5% into the margin
+   Section padding 120 / 120 (40 on top after another white section) · sides 24 · max width 1080 · rows 80 apart */
+@font-face{font-family:'Natasha Walker';src:url('https://mauromafrici.com/wp-content/uploads/2026/09/NatashaWalker-Regular.otf') format('opentype');font-display:swap}
+:root{
+  --burgundy:#9B2243; --gold:#C0A05C; --gold-nav:#B8985A; --champagne:#E6CD9C;
+  --cream:#FBF7ED; --ink:#241D19;
+  --head:'Natasha Walker','Cinzel',serif;
+  --cta:'Julius Sans One',sans-serif;
+  --body:'Arsenal',sans-serif;
+  --sheen:linear-gradient(135deg,#B8985A 0%,#C6A76B 28%,#B8985A 52%,#CDB177 70%,#AE8E50 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fff;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---- top bar ---- */
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;background:var(--sheen);color:var(--ink)}
+.bar__res{font-family:var(--cta);font-size:13px;letter-spacing:.28em;text-transform:uppercase;line-height:1.9}
+.bar__res span{display:inline-block;border-bottom:1px solid var(--ink)}
+.bar__logo{font-family:var(--head);font-weight:600;font-size:20px;letter-spacing:.18em;text-transform:uppercase}
+.bar__burger{width:26px}
+.bar__burger span{display:block;height:1px;background:var(--ink);margin:6px 0}
+
+/* ---- shared ---- */
+.sec{padding:120px 24px;background:#fff}
+.sec--after{padding-top:40px}
+.wrap{max-width:1080px;margin:0 auto}
+.h1,.h2{font-family:var(--head);font-weight:600;line-height:1.2;text-transform:uppercase;color:var(--gold)}
+.h1{font-size:40px;line-height:1.3}
+.h2{font-size:38px}
+.h2--burgundy{color:var(--burgundy)}
+.optional{color:rgba(36,29,25,.55);font-style:italic}
+.link{color:var(--burgundy);border-bottom:1px solid currentColor}
+.btn{display:inline-block;padding:10px 24px;border-radius:3px;background:var(--gold);color:var(--cream);
+  font-family:var(--cta);font-weight:600;font-size:14px;line-height:1.5;letter-spacing:2px;text-transform:uppercase}
+
+/* ---- S1 image hero ---- */
+.hero{height:62vh;overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover}
+
+/* ---- S2 intro: centered header + copy + CTA ---- */
+.intro{text-align:center}
+.intro .p{max-width:760px;margin:16px auto 0}
+.intro .h1 + .p{margin-top:32px}
+.intro .btn{margin-top:32px}
+
+/* ---- S4–S5 artist spotlight / artists and artisans: text 40% | photo 65% (5% into the margin), alternating sides ---- */
+.rooms{display:flex;flex-direction:column;gap:80px}
+.room{display:flex;gap:48px;align-items:stretch}
+.room__text{width:40%;display:flex;flex-direction:column;gap:16px}
+.room__media{width:65%;flex:none;height:450px;position:relative;border-radius:16px;overflow:hidden;
+  border:2px solid var(--gold);box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.room__media--burgundy{border-color:var(--burgundy)}
+.room--photo-right .room__media{margin-right:-5%}
+.room--photo-left .room__media{margin-left:-5%}
+
+.room__media img{width:100%;height:100%;object-fit:cover}
+.btn--burgundy{background:var(--burgundy)}
+.room__text .btn{align-self:flex-start;margin-top:16px}
+
+/* ---- divider: same as the Home- Rulebook page (60px tall strip of the original wallpaper photo) ---- */
+.divider{height:60px;overflow:hidden;background:var(--burgundy)}
+.divider img{width:100%;height:120px;object-fit:cover;object-position:center center}
+
+/* ---- S6 antiques gallery: 3 across, arrows scroll to the next photos, optional caption under each photo ---- */
+.quick{text-align:center}
+.quick .p{max-width:760px;margin:16px auto 0}
+.quick .btn{margin-top:32px}
+/* same as the 3-across image carousel on the Home- Rulebook page: 10% wider than the text (54px into each margin), 10px between photos */
+.strip{position:relative;margin:56px -54px 0}
+.strip__view{overflow:hidden;padding:4px 4px 34px;margin:0 -4px -34px}
+.strip__track{display:flex;gap:10px;transition:transform .5s ease}
+.strip__item{flex:none;width:calc((100% - 20px) / 3);aspect-ratio:4 / 3;border-radius:16px;overflow:hidden;
+  border:2px solid var(--gold);box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.strip__item img{width:100%;height:100%;object-fit:cover}
+/* arrows: arrow only, 25px, #FBF7ED, no circle */
+.strip__btn{position:absolute;top:calc(50% - 15px);transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;
+  color:var(--cream);line-height:0;z-index:2}
+.strip__btn svg{display:block;width:25px;height:25px}
+.strip__btn--prev{left:10px}
+.strip__btn--next{right:10px}
+
+/* image carousel in one image position: click the arrows to see other photos of the room */
+.car__slide{position:absolute;inset:0;opacity:0;transition:opacity .5s}
+.car__slide.is-on{opacity:1}
+.car__slide img{width:100%;height:100%;object-fit:cover}
+/* arrows: same as the image carousels on the Home- Rulebook page (arrow only, 25px, #FBF7ED, no circle) */
+.car__btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;
+  color:var(--cream);line-height:0;z-index:2}
+.car__btn svg{display:block;width:25px;height:25px}
+.car__btn--prev{left:10px}
+.car__btn--next{right:10px}
+
+/* ---- S3 the transformation: two photos side by side, no header or text (part of the intro) ----
+   same width as the 3-across carousel on the Home- Rulebook page: 10% wider than the text, 10px between photos */
+.pair{display:flex;gap:10px;margin:56px -54px 0}
+.pair__item{flex:1;height:450px;border-radius:16px;overflow:hidden;border:2px solid var(--gold);
+  box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.pair__item img{width:100%;height:100%;object-fit:cover}
+
+/* captions for the antiques photos (optional) */
+.strip__item{aspect-ratio:auto;border:0;box-shadow:none;border-radius:0;overflow:visible;background:none}
+.strip__photo{aspect-ratio:4 / 3;border-radius:16px;overflow:hidden;border:2px solid var(--gold);
+  box-shadow:0 8px 24px 0 rgba(0,0,0,.3);background:#fff}
+.strip__photo img{width:100%;height:100%;object-fit:cover}
+.strip__cap{margin-top:14px;text-align:center}
+.strip__btn{top:0;transform:none}
+
+/* ---- S6 footer (same as the built pages) ---- */
+.foot{padding:64px 24px;background:var(--sheen);color:var(--ink)}
+.foot__grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.3fr 1fr;gap:32px}
+.foot h4{font-family:var(--cta);font-weight:400;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.foot h4 span{display:inline-block;border-bottom:1px solid var(--ink);padding-bottom:3px}
+.foot p{font-family:var(--body);font-size:14px;line-height:1.9}
+.foot__social{display:flex;gap:10px;margin-top:4px}
+.foot__social span{width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--gold-nav);display:grid;
+  place-items:center;font-family:var(--cta);font-size:10px}
+
+/* ---- Tablet ---- */
+@media (max-width:1024px){
+  .h1{font-size:36px}
+  .h2{font-size:34px}
+  .room{flex-direction:column;gap:40px}
+  .room__text,.room__media{width:100%}
+  .room--photo-right .room__media,.room--photo-left .room__media{margin-left:0;margin-right:0}
+  .foot__grid{grid-template-columns:repeat(3,1fr);gap:40px 32px}
+  .strip{margin-left:0;margin-right:0}
+  .pair{margin-left:0;margin-right:0}
+  .strip__item{width:calc((100% - 10px) / 2)}
+}
+/* ---- Mobile ---- */
+@media (max-width:767px){
+  .h1{font-size:28px}
+  .h2{font-size:26px}
+  .room__media{height:400px}
+  .pair{flex-direction:column;gap:24px}
+  .pair__item{flex:none;height:300px}
+  .strip__item{width:100%}
+  .foot__grid{grid-template-columns:1fr}
+  .foot p{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar__res"><span>Reservations</span><br>312-366-2020</div>
+  <div class="bar__logo">MM</div>
+  <div class="bar__burger"><span></span><span></span></div>
+</div>
+
+<!-- Section 1 — Image Hero -->
+<section class="hero">
+  <img src="https://mauromafrici.com/wp-content/uploads/2026/08/04.jpg" alt="">
+</section>
+
+<!-- Section 2 — Intro  +  Section 3 — Side-by-Side Images: The Transformation (no header or text) -->
+<section class="sec intro">
+  <div class="wrap">
+    <h1 class="h1">Design Vision</h1>
+    <p class="p optional">Intro paragraph about design vision, artists and philosophy.</p>
+    <div class="pair">
+      <div class="pair__item"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/01comp.jpg" alt="Sketch of the space or construction photo"></div>
+      <div class="pair__item"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/05.jpg" alt="The final space"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Sections 4–5 -->
+<section class="sec sec--after">
+  <div class="wrap rooms">
+
+    <!-- Section 4 — Artist Spotlight: text | image of David's painting -->
+    <div class="room room--photo-right">
+      <div class="room__text">
+        <h2 class="h2">Artist Spotlight: David De Biasio</h2>
+        <p class="optional">Body copy about David’s work.</p>
+      </div>
+      <div class="room__media"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/03.jpg" alt="David’s painting"></div>
+    </div>
+
+    <!-- Section 5 — image block (rotating images in the one image spot, clickable arrows) | text -->
+    <div class="room room--photo-left">
+      <div class="room__media room__media--burgundy car">
+        <div class="car__slide is-on"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/IMG_7911b.jpg" alt=""></div>
+        <div class="car__slide"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/IMG_7907b.jpg" alt=""></div>
+        <div class="car__slide"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/02comp.jpg" alt=""></div>
+        <button class="car__btn car__btn--prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 4 7 12 15 20"/></svg></button>
+        <button class="car__btn car__btn--next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 4 17 12 9 20"/></svg></button>
+      </div>
+      <div class="room__text">
+        <h2 class="h2 h2--burgundy">About the Artists and Artisans</h2>
+        <p class="optional">Body copy highlighting the artists and artisans who contributed to the restaurant, from the artwork to chandeliers, carved wood sconces, etc.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/Wallpaper-Updated-Ligher-OneMM.jpeg" alt=""></div>
+
+<!-- Section 6 — Antiques Gallery: 3 across with arrows, optional captions -->
+<section class="sec quick">
+  <div class="wrap">
+    <h2 class="h2">Antiques</h2>
+    <p class="p">Each antique in the restaurant has been hand-selected for the space to create atmosphere and deepen the restaurant’s connection to its Italian roots. From Venetian Mirrors and Cabinet to the 17th Century columns flanking the bar.</p>
+    <div class="strip" id="strip">
+      <button class="strip__btn strip__btn--prev" type="button" aria-label="Previous photos"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 4 7 12 15 20"/></svg></button>
+      <button class="strip__btn strip__btn--next" type="button" aria-label="Next photos"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 4 17 12 9 20"/></svg></button>
+      <div class="strip__view">
+        <div class="strip__track">
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/04.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/03.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/09/IMG_7907b.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/05.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/01comp.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+          <figure class="strip__item"><div class="strip__photo"><img src="https://mauromafrici.com/wp-content/uploads/2026/08/02comp.jpg" alt=""></div><figcaption class="strip__cap optional">Caption (optional)</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7 — Footer -->
+<footer class="foot">
+  <div class="foot__grid">
+    <div class="foot__col">
+      <h4><span>Policies &#8594;</span></h4>
+      <p>See our Policies for more information on dietary restrictions, cancellations and more.</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>Location &#8594;</span></h4>
+      <p>980 N. Michigan Avenue</p>
+      <p>Suite 230</p>
+      <p>Chicago, IL 60611</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>Contact &#8594;</span></h4>
+      <p>312-366-2020</p>
+      <p>info@mauromafrici.com</p>
+      <p>Join Our Email List</p>
+      <p>Join Our Team</p>
+    </div>
+    <div class="foot__col foot__col--res">
+      <h4><span>Reservations &#8594;</span></h4>
+      <p>Open for Dinner</p>
+      <p>Monday-Thursday, 5:00 to 9:00</p>
+      <p>Friday-Saturday, 5:00 to 9:30</p>
+    </div>
+    <div class="foot__col">
+      <h4><span>News &amp; Press &#8594;</span></h4>
+      <div class="foot__social"><span>FB</span><span>IG</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* S5: one image spot, arrows move to the previous / next photo */
+  document.querySelectorAll('.car').forEach(function(car){
+    var slides = car.querySelectorAll('.car__slide'), cur = 0;
+    function go(n){ slides[cur].classList.remove('is-on'); cur = (n + slides.length) % slides.length; slides[cur].classList.add('is-on'); }
+    car.querySelector('.car__btn--prev').onclick = function(){ go(cur - 1); };
+    car.querySelector('.car__btn--next').onclick = function(){ go(cur + 1); };
+  });
+  /* S6: 3 across (2 on tablet, 1 on mobile): arrows move one photo at a time and loop at the ends */
+  var strip = document.getElementById('strip'), track = strip.querySelector('.strip__track');
+  var items = track.children, cur = 0;
+  function perView(){ return window.innerWidth <= 767 ? 1 : (window.innerWidth <= 1024 ? 2 : 3); }
+  function place(){
+    /* keep the arrows at the middle of the photos (not of photo + caption) */
+    var h = strip.querySelector('.strip__photo').offsetHeight;
+    [].forEach.call(strip.querySelectorAll('.strip__btn'), function(b){ b.style.top = (4 + h / 2 - 12) + 'px'; });
+  }
+  function go(n){
+    var max = items.length - perView();
+    cur = n < 0 ? max : (n > max ? 0 : n);
+    track.style.transform = 'translateX(' + (-items[cur].offsetLeft) + 'px)';
+  }
+  strip.querySelector('.strip__btn--prev').onclick = function(){ go(cur - 1); };
+  strip.querySelector('.strip__btn--next').onclick = function(){ go(cur + 1); };
+  window.addEventListener('resize', function(){ place(); go(Math.min(cur, items.length - perView())); });
+  window.addEventListener('load', place); place();
+})();
+</script>
+</body>
+</html>
